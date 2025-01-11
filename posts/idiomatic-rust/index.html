@@ -1,0 +1,287 @@
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Idiomatic Rust - 帛书文摘</title>
+<meta name=description content="本书涵盖了Rust编程中的核心和高级模式，包括资源获取即初始化（RAII）、参数传递、构造函数、错误处理、全局状态管理以及各种设计模式（例如构建器模式、观察者模式、命令模式）。书中还探讨了库设计原则、宏的使用、处理可变性和不可变性以及避免反模式的方法，并提供了大量代码示例和工具安装指南。 此外，文档也简要介绍了作者学习编程的经历以及阅读本书的方法。"><meta name=author content="毕方"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"帛书文摘","url":"https:\/\/book-excerpts.checkitout.dev\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/book-excerpts.checkitout.dev\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/book-excerpts.checkitout.dev\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/book-excerpts.checkitout.dev\/posts\/idiomatic-rust\/","name":"Idiomatic rust"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"map[name:毕方]"},"headline":"Idiomatic Rust","description":"本书涵盖了Rust编程中的核心和高级模式，包括资源获取即初始化（RAII）、参数传递、构造函数、错误处理、全局状态管理以及各种设计模式（例如构建器模式、观察者模式、命令模式）。书中还探讨了库设计原则、宏的使用、处理可变性和不可变性以及避免反模式的方法，并提供了大量代码示例和工具安装指南。 此外，文档也简要介绍了作者学习编程的经历以及阅读本书的方法。","inLanguage":"en","wordCount":888,"datePublished":"2025-01-01T21:19:23","dateModified":"2025-01-01T21:19:23","image":"https:\/\/book-excerpts.checkitout.dev\/","keywords":["Rust"],"mainEntityOfPage":"https:\/\/book-excerpts.checkitout.dev\/posts\/idiomatic-rust\/","publisher":{"@type":"Organization","name":"https:\/\/book-excerpts.checkitout.dev\/","logo":{"@type":"ImageObject","url":"https:\/\/book-excerpts.checkitout.dev\/","height":60,"width":60}}}</script><meta property="og:title" content="Idiomatic Rust"><meta property="og:description" content="本书涵盖了Rust编程中的核心和高级模式，包括资源获取即初始化（RAII）、参数传递、构造函数、错误处理、全局状态管理以及各种设计模式（例如构建器模式、观察者模式、命令模式）。书中还探讨了库设计原则、宏的使用、处理可变性和不可变性以及避免反模式的方法，并提供了大量代码示例和工具安装指南。 此外，文档也简要介绍了作者学习编程的经历以及阅读本书的方法。"><meta property="og:image" content="https://book-excerpts.checkitout.dev/images/idiomatic-rust.png"><meta property="og:url" content="https://book-excerpts.checkitout.dev/posts/idiomatic-rust/"><meta property="og:type" content="website"><meta property="og:site_name" content="帛书文摘"><link rel=apple-touch-icon sizes=180x180 href=https://book-excerpts.checkitout.dev/favicon/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=https://book-excerpts.checkitout.dev/favicon/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=https://book-excerpts.checkitout.dev/favicon/favicon-16x16.png><meta name=generator content="Hugo 0.140.2"><link rel=alternate href=https://book-excerpts.checkitout.dev/index.xml type=application/rss+xml title=帛书文摘><script src=https://book-excerpts.checkitout.dev/js/dark-mode.js></script><link rel=stylesheet href=/style.min.css><link href=/vendor/glightbox/css/glightbox.min.css rel=stylesheet><script src=https://book-excerpts.checkitout.dev/vendor/glightbox/js/glightbox.min.js></script></head><body><div class="container fixed-top mw-100"><div class="row justify-content-center"><div class="col-sm-12 col-md-12 col-lg-10 col-xl-10"><nav class="navbar navbar-expand-lg navbar-light fixed-top p-0"><div class=container><a class="navbar-brand fw-bold" href=https://book-excerpts.checkitout.dev/>帛书文摘</a>
+<button class=navbar-toggler type=button data-bs-toggle=collapse data-bs-target=#navbarNav aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse justify-content-end" id=navbarNav><ul class="navbar-nav mb-2 mb-lg-0 align-items-baseline"><li class=nav-item><a class=nav-link title=Home href=/>Home</a></li><li class=nav-item><a class=nav-link title=Tags href=/tags/>Tags</a></li><li class=nav-item><a class=nav-link title=Categories href=/categories/>Categories</a></li><li class="nav-item nav-link"><a id=dark-mode-toggle class="bi bi-moon-stars" role=button></a></li></ul></div></div></nav></div></div></div><header class=header-section><div class="intro-header no-img mt-10"><div class=container><div class="row justify-content-center"><div class="col-sm-12 col-md-12 col-lg-12 col-xl-12"><div class=posts-heading><h1 class="fw-semibold display-5 lh-1 mb-3">Idiomatic Rust</h1></div></div></div></div></div></header><div class=container role=main><div class=row><div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 pt-4"><article role=main class=blog-post><h1 id=像rustacean一样编写惯用的rust代码>像Rustacean一样编写惯用的Rust代码</h1><p>本书是作者Brenden Matthews继《Code Like a Pro in Rust》之后的又一本Rust编程指南，本书重点关注Rust的惯用代码模式、习惯和约定。本书的灵感来源于经典的《设计模式：可复用面向对象软件的要素》，但并不直接翻译原书的模式，而是专注于Rust特有的模式和实践。本书的目标是帮助读者像Rustacean（Rust的资深开发者）一样编写代码，而不仅仅是了解Rust的语法。</p><p>本书分为四个部分：</p><ul><li>第一部分：基础构建模块</li><li>第二部分：核心模式</li><li>第三部分：高级模式</li><li>第四部分：问题避免</li></ul><h2 id=第一部分基础构建模块>第一部分：基础构建模块</h2><h3 id=第一章rust风格模式>第一章：Rust风格模式</h3><p>本章概述了本书的内容，包括Rust的各种模式、习惯和约定。作者将模式分为三个层次：惯用语（idioms）、设计模式（design patterns）和架构（architecture）。惯用语是最低层次的抽象，设计模式是中间层次，而架构是最高层次的抽象。本章还强调了Rust社区的重要性，以及Rust语言的独特之处在于其完全由社区驱动的演变。</p><ul><li>主要内容<ul><li>本书涵盖了Rust的各种模式、惯用语和约定。</li><li>强调了Rust社区在语言发展中的作用。</li><li>介绍了模式、设计模式和架构之间的层次关系。</li></ul></li></ul><h3 id=第二章rust的基础构建模块>第二章：Rust的基础构建模块</h3><p>本章深入探讨了Rust的几个核心构建模块：泛型（generics）、trait和模式匹配（pattern matching）。泛型允许编写可以应用于多种类型的代码，而无需为每种类型都编写重复的代码。Trait类似于其他语言中的接口，允许定义共享行为。模式匹配则是一种强大的控制流机制，用于解构数据结构。本章还讨论了trait在面向对象编程中的应用，以及如何使用trait来实现多态性。</p><ul><li><p>主要内容</p><ul><li><p><strong>泛型</strong>：介绍了泛型的基本概念、使用方法和优点，包括类型参数、trait约束等。</p></li><li><p><strong>Trait</strong>：深入讲解了trait的定义、实现和应用，包括trait对象、动态分发等。</p></li><li><p><strong>模式匹配</strong>：详细介绍了模式匹配的语法和用法，包括如何匹配不同类型的数据结构。</p></li><li><p><strong>示例代码</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#66d9ef>trait</span> MyTrait {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>trait_hello</span>(<span style=color:#f92672>&amp;</span>self);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>as_any</span>(<span style=color:#f92672>&amp;</span>self) -&gt; <span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>dyn</span> std::any::Any;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>MyStruct1</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>impl</span> MyStruct1 {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>struct_hello</span>(<span style=color:#f92672>&amp;</span>self) {
+</span></span><span style=display:flex><span>        println!(<span style=color:#e6db74>&#34;Hello, world! from MyStruct1&#34;</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>impl</span> MyTrait <span style=color:#66d9ef>for</span> MyStruct1 {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>trait_hello</span>(<span style=color:#f92672>&amp;</span>self) {
+</span></span><span style=display:flex><span>        self.struct_hello();
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>as_any</span>(<span style=color:#f92672>&amp;</span>self) -&gt; <span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>dyn</span> std::any::Any {
+</span></span><span style=display:flex><span>        self
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>MyStruct2</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>impl</span> MyStruct2 {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>struct_hello</span>(<span style=color:#f92672>&amp;</span>self) {
+</span></span><span style=display:flex><span>        println!(<span style=color:#e6db74>&#34;Hello, world! from MyStruct2&#34;</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>impl</span> MyTrait <span style=color:#66d9ef>for</span> MyStruct2 {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>trait_hello</span>(<span style=color:#f92672>&amp;</span>self) {
+</span></span><span style=display:flex><span>        self.struct_hello();
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>as_any</span>(<span style=color:#f92672>&amp;</span>self) -&gt; <span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>dyn</span> std::any::Any {
+</span></span><span style=display:flex><span>        self
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></li></ul></li></ul><h3 id=第三章代码流>第三章：代码流</h3><p>本章介绍了Rust中控制代码流的几种方法，包括模式匹配、闭包和迭代器。模式匹配不仅可以用于解构数据，还可以用于控制代码的执行路径。闭包是一种匿名函数，可以捕获其环境中的变量。迭代器则是一种用于遍历集合的抽象。本章还讨论了函数式编程在Rust中的应用，以及如何使用迭代器进行链式操作。</p><ul><li><p>主要内容</p><ul><li><p><strong>模式匹配</strong>：介绍了如何使用模式匹配进行更复杂的控制流。</p></li><li><p><strong>闭包</strong>：详细讲解了闭包的语法和使用场景，包括如何捕获环境中的变量。</p></li><li><p><strong>迭代器</strong>：介绍了迭代器的概念和用法，包括如何使用<code>map</code>、<code>filter</code>等函数进行链式操作。</p></li><li><p><strong>示例代码</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>try_to_write_to_file</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>match</span> write_to_file() {
+</span></span><span style=display:flex><span>        Ok(()) <span style=color:#f92672>=&gt;</span> println!(<span style=color:#e6db74>&#34;Write succeeded&#34;</span>),
+</span></span><span style=display:flex><span>        Err(err) <span style=color:#f92672>=&gt;</span> println!(<span style=color:#e6db74>&#34;Write failed: </span><span style=color:#e6db74>{}</span><span style=color:#e6db74>&#34;</span>, err.to_string()),
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></li></ul></li></ul><h2 id=第二部分核心模式>第二部分：核心模式</h2><h3 id=第四章入门模式>第四章：入门模式</h3><p>本章介绍了一些基本的Rust编程模式，包括RAII（资源获取即初始化）、通过值传递和通过引用传递、构造函数、对象成员可见性和访问权限、错误处理和全局状态。RAII是Rust的核心概念，它通过自动管理资源的生命周期来防止内存泄漏。Rust还提供了多种方法来处理错误，包括<code>Result</code>类型和<code>?</code>运算符。对于全局状态，Rust提供了多种工具，包括<code>lazy_static</code>、<code>once_cell</code>和<code>static_init</code>等。</p><ul><li><p>主要内容</p><ul><li><p><strong>RAII</strong>：深入讲解了RAII的概念、工作原理以及在Rust中的应用。</p></li><li><p><strong>参数传递</strong>：对比了通过值传递和通过引用传递的区别和适用场景。</p></li><li><p><strong>构造函数</strong>：介绍了如何在Rust中创建构造函数，以及如何处理多个构造函数的情况。</p></li><li><p><strong>对象成员可见性</strong>：讨论了如何使用<code>pub</code>关键字来控制对象成员的可见性。</p></li><li><p><strong>错误处理</strong>：详细讲解了如何使用<code>Result</code>类型和<code>?</code>运算符进行错误处理。</p></li><li><p><strong>全局状态</strong>：介绍了如何使用<code>lazy_static</code>、<code>once_cell</code>和<code>static_init</code>等工具来管理全局状态。</p></li><li><p><strong>示例代码</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#75715e>#[derive(Debug, Clone)]</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>Pizza</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>pub</span> toppings: Vec<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>&gt;</span>,
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>impl</span> Pizza {
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>new</span>(toppings: Vec<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>&gt;</span>) -&gt; <span style=color:#a6e22e>Self</span> {
+</span></span><span style=display:flex><span>         Self { toppings }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>     <span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>replace_toppings</span>(
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> self,
+</span></span><span style=display:flex><span>         toppings: Vec<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>&gt;</span>,
+</span></span><span style=display:flex><span>    ) -&gt; Vec<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>&gt;</span> {
+</span></span><span style=display:flex><span>         std::mem::replace(<span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> self.toppings, toppings)
+</span></span><span style=display:flex><span>   }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></li></ul></li></ul><h3 id=第五章设计模式超越基础>第五章：设计模式：超越基础</h3><p>本章深入探讨了Rust中的一些高级设计模式，包括宏（macros）、构建器模式（builder pattern）、流畅接口（fluent interface）、观察者模式（observer pattern）、命令模式（command pattern）和新类型模式（newtype pattern）。宏是一种强大的元编程工具，可以生成代码。构建器模式用于创建复杂对象，而无需编写冗长的构造函数。流畅接口则是一种通过链式调用方法来构建对象的模式。观察者模式允许对象观察其他对象的变化。命令模式则将操作封装为对象，可以进行排队、撤销等操作。新类型模式则用于创建类型安全的包装类型。</p><ul><li><p>主要内容</p><ul><li><p><strong>宏</strong>：详细讲解了宏的语法和用法，包括声明宏和过程宏。</p></li><li><p><strong>构建器模式</strong>：介绍了如何使用构建器模式创建复杂对象，并通过宏来简化代码。</p></li><li><p><strong>流畅接口</strong>：讨论了如何使用流畅接口模式构建对象，并与构建器模式相结合。</p></li><li><p><strong>观察者模式</strong>：讲解了观察者模式的基本概念和实现方式。</p></li><li><p><strong>命令模式</strong>：介绍了命令模式的原理和应用场景。</p></li><li><p><strong>新类型模式</strong>：详细讲解了如何使用新类型模式创建类型安全的包装类型。</p></li><li><p><strong>示例代码</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span>macro_rules<span style=color:#f92672>!</span> dog_struct {
+</span></span><span style=display:flex><span>    (<span style=color:#75715e>$breed</span>:<span style=color:#a6e22e>ident</span>) <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>struct</span> <span style=color:#75715e>$breed</span> {
+</span></span><span style=display:flex><span>            name: String,
+</span></span><span style=display:flex><span>            age: <span style=color:#66d9ef>i32</span>,
+</span></span><span style=display:flex><span>            breed: String,
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>impl</span> <span style=color:#75715e>$breed</span> {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>new</span>(name: <span style=color:#66d9ef>&amp;</span><span style=color:#66d9ef>str</span>, age: <span style=color:#66d9ef>i32</span>) -&gt; <span style=color:#a6e22e>Self</span> {
+</span></span><span style=display:flex><span>                Self {
+</span></span><span style=display:flex><span>                    name: <span style=color:#a6e22e>name</span>.into(),
+</span></span><span style=display:flex><span>                    age,
+</span></span><span style=display:flex><span>                    breed: <span style=color:#a6e22e>stringify</span><span style=color:#f92672>!</span>(<span style=color:#75715e>$breed</span>).into(),
+</span></span><span style=display:flex><span>                }
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>impl</span> Dog <span style=color:#66d9ef>for</span> <span style=color:#75715e>$breed</span> {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>name</span>(<span style=color:#f92672>&amp;</span>self) -&gt; <span style=color:#66d9ef>&amp;</span>String {
+</span></span><span style=display:flex><span>                <span style=color:#f92672>&amp;</span>self.name
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>age</span>(<span style=color:#f92672>&amp;</span>self) -&gt; <span style=color:#66d9ef>i32</span> {
+</span></span><span style=display:flex><span>                self.age
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>breed</span>(<span style=color:#f92672>&amp;</span>self) -&gt; <span style=color:#66d9ef>&amp;</span>String {
+</span></span><span style=display:flex><span>                <span style=color:#f92672>&amp;</span>self.breed
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>trait</span> Observable {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>type</span> <span style=color:#a6e22e>Observer</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>update</span>(<span style=color:#f92672>&amp;</span>self);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>attach</span>(<span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> self, observer: <span style=color:#a6e22e>Self</span>::Observer);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>detach</span>(<span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> self, observer: <span style=color:#a6e22e>Self</span>::Observer);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#66d9ef>impl</span> ReadFile {
+</span></span><span style=display:flex><span>     <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>new</span>(receiver: <span style=color:#a6e22e>File</span>) -&gt; Box<span style=color:#f92672>&lt;</span>Self<span style=color:#f92672>&gt;</span> {
+</span></span><span style=display:flex><span>       Box::new(Self { receiver })
+</span></span><span style=display:flex><span>     }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#75715e>#[derive(Debug)]</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>BitCount</span>(<span style=color:#66d9ef>u32</span>);
+</span></span><span style=display:flex><span> <span style=color:#75715e>#[derive(Debug)]</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>ByteCount</span>(<span style=color:#66d9ef>u32</span>);
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>impl</span> BitCount {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>to_bytes</span>(<span style=color:#f92672>&amp;</span>self) -&gt; <span style=color:#a6e22e>ByteCount</span> {
+</span></span><span style=display:flex><span>     ByteCount(self.<span style=color:#ae81ff>0</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>8</span>)
+</span></span><span style=display:flex><span>   }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></li></ul></li></ul><h3 id=第六章设计一个库>第六章：设计一个库</h3><p>本章讨论了如何设计一个好的Rust库，强调了清晰的文档、一致的API和遵循标准库的约定。作者建议在设计库时要保持简单，避免过度抽象，并尽可能使用基本类型。本章还强调了Rustdoc的重要性，并介绍了如何使用<code>///</code>注释来生成文档。</p><ul><li><p>主要内容</p><ul><li><p><strong>库设计原则</strong>：介绍了好的库设计的一些原则，包括简单性、一致性和可维护性。</p></li><li><p><strong>文档</strong>：详细讲解了如何使用Rustdoc生成文档，并强调了文档的重要性。</p></li><li><p><strong>遵循标准库</strong>：建议开发者尽可能遵循Rust标准库的约定。</p></li><li><p><strong>示例代码</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span> <span style=color:#e6db74>/// Provides a singly linked list implementation with iterator access.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span><span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>LinkedList</span><span style=color:#f92672>&lt;</span>T<span style=color:#f92672>&gt;</span> {
+</span></span><span style=display:flex><span>    head: Option<span style=color:#f92672>&lt;</span>ListItemPtr<span style=color:#f92672>&lt;</span>T<span style=color:#f92672>&gt;&gt;</span>,
+</span></span><span style=display:flex><span> }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>impl</span><span style=color:#f92672>&lt;</span>T<span style=color:#f92672>&gt;</span> LinkedList<span style=color:#f92672>&lt;</span>T<span style=color:#f92672>&gt;</span> {
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>/// Constructs a new, empty [`LinkedList&lt;T&gt;`].
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span>    <span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>new</span>() -&gt; <span style=color:#a6e22e>Self</span> {
+</span></span><span style=display:flex><span>         Self { head: None }
+</span></span><span style=display:flex><span>   }
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>/// Appends an element to the end of the list. If the list is empty,
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span>    <span style=color:#e6db74>/// the element becomes the first element of the list.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span>     <span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>append</span>(<span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> self, t: <span style=color:#a6e22e>T</span>) {
+</span></span><span style=display:flex><span>       <span style=color:#66d9ef>match</span> <span style=color:#f92672>&amp;</span>self.head {
+</span></span><span style=display:flex><span>          Some(head) <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>              <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> next <span style=color:#f92672>=</span> head.clone();
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>while</span> next.as_ref().borrow().next.is_some() {
+</span></span><span style=display:flex><span>                 <span style=color:#66d9ef>let</span> n <span style=color:#f92672>=</span> next.as_ref().borrow()
+</span></span><span style=display:flex><span>                      .next.as_ref().unwrap().clone();
+</span></span><span style=display:flex><span>                    next <span style=color:#f92672>=</span> n;
+</span></span><span style=display:flex><span>              }
+</span></span><span style=display:flex><span>                 next.as_ref().borrow_mut().next <span style=color:#f92672>=</span>
+</span></span><span style=display:flex><span>                    Some(Rc::new(RefCell::new(ListItem::new(t))));
+</span></span><span style=display:flex><span>           }
+</span></span><span style=display:flex><span>            None <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>                 self.head <span style=color:#f92672>=</span> Some(Rc::new(RefCell::new(ListItem::new(t))));
+</span></span><span style=display:flex><span>             }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>   }
+</span></span><span style=display:flex><span> }
+</span></span></code></pre></div></li></ul></li></ul><h2 id=第三部分高级模式>第三部分：高级模式</h2><h3 id=第七章使用trait泛型和结构体实现专门化任务>第七章：使用Trait、泛型和结构体实现专门化任务</h3><p>本章深入探讨了Rust中Trait、泛型和结构体的一些高级用法，包括常量泛型（const generics）、为外部crate类型实现trait、扩展trait（extension traits）、覆盖trait（blanket traits）、标记trait（marker traits）、结构体标记（struct tagging）和引用对象（reference objects）。常量泛型允许在编译时指定泛型参数。扩展trait允许为外部类型添加新的方法。标记trait则用于表示类型的某种特性。结构体标记则使用类型来表示状态。引用对象则用于在不暴露内部数据的情况下访问数据。</p><ul><li><p>主要内容</p><ul><li><p><strong>常量泛型</strong>：介绍了常量泛型的概念和用法，包括如何在编译时指定泛型参数。</p></li><li><p><strong>为外部crate类型实现trait</strong>：讨论了如何在不修改外部crate的情况下，为外部类型实现trait。</p></li><li><p><strong>扩展trait</strong>：介绍了扩展trait的概念和用法，包括如何为现有类型添加新的方法。</p></li><li><p><strong>覆盖trait</strong>：讲解了覆盖trait的用法，包括如何为所有满足特定条件的类型实现trait。</p></li><li><p><strong>标记trait</strong>：介绍了标记trait的概念和用法，包括如何使用trait来表示类型的某种特性。</p></li><li><p><strong>结构体标记</strong>：讨论了如何使用类型来表示状态，以及如何使用结构体标记来创建类型安全的状态机。</p></li><li><p><strong>引用对象</strong>：讲解了引用对象的概念和用法，包括如何在不暴露内部数据的情况下访问数据。</p></li><li><p>示例代码</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span>  <span style=color:#66d9ef>impl</span><span style=color:#f92672>&lt;</span>T: Default <span style=color:#f92672>+</span> Copy, <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>LENGTH</span>: <span style=color:#66d9ef>usize</span><span style=color:#f92672>&gt;</span> From<span style=color:#f92672>&lt;</span>Vec<span style=color:#f92672>&lt;</span>T<span style=color:#f92672>&gt;&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> Buffer<span style=color:#f92672>&lt;</span>T, <span style=color:#66d9ef>LENGTH</span><span style=color:#f92672>&gt;</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>from</span>(v: Vec<span style=color:#f92672>&lt;</span>T<span style=color:#f92672>&gt;</span>) -&gt; <span style=color:#a6e22e>Self</span> {
+</span></span><span style=display:flex><span>      assert_eq!(<span style=color:#66d9ef>LENGTH</span>, v.len());
+</span></span><span style=display:flex><span>         <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> ret <span style=color:#f92672>=</span> Self {
+</span></span><span style=display:flex><span>             buf: [T::default(); <span style=color:#66d9ef>LENGTH</span>],
+</span></span><span style=display:flex><span>        };
+</span></span><span style=display:flex><span>         ret.buf.copy_from_slice(<span style=color:#f92672>&amp;</span>v);
+</span></span><span style=display:flex><span>       ret
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span>    <span style=color:#75715e>#[derive(
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     Clone, Copy, Debug, Default, Eq, Hash, Ord, PartialEq, PartialOrd,
+</span></span></span><span style=display:flex><span><span style=color:#75715e> )]</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>KitchenSink</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>trait</span> FullFeatured {}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>impl</span><span style=color:#f92672>&lt;</span>T<span style=color:#f92672>&gt;</span> FullFeatured <span style=color:#66d9ef>for</span> T <span style=color:#66d9ef>where</span>
+</span></span><span style=display:flex><span>     T: Clone
+</span></span><span style=display:flex><span>         <span style=color:#f92672>+</span> Copy
+</span></span><span style=display:flex><span>         <span style=color:#f92672>+</span> std::fmt::Debug
+</span></span><span style=display:flex><span>          <span style=color:#f92672>+</span> Default
+</span></span><span style=display:flex><span>         <span style=color:#f92672>+</span> Eq
+</span></span><span style=display:flex><span>         <span style=color:#f92672>+</span> std::hash::Hash
+</span></span><span style=display:flex><span>         <span style=color:#f92672>+</span> Ord
+</span></span><span style=display:flex><span>         <span style=color:#f92672>+</span> PartialEq
+</span></span><span style=display:flex><span>         <span style=color:#f92672>+</span> PartialOrd { }
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span>    <span style=color:#66d9ef>trait</span> BulbState {}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>LightBulb</span><span style=color:#f92672>&lt;</span>State: <span style=color:#a6e22e>BulbState</span><span style=color:#f92672>&gt;</span> {
+</span></span><span style=display:flex><span>     phantom: <span style=color:#a6e22e>PhantomData</span><span style=color:#f92672>&lt;</span>State<span style=color:#f92672>&gt;</span>,
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>On</span> {}
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>Off</span> {}
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>impl</span> BulbState <span style=color:#66d9ef>for</span> On {}
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>impl</span> BulbState <span style=color:#66d9ef>for</span> Off {}
+</span></span></code></pre></div></li></ul></li></ul><h2 id=第八章状态机协程宏和序曲>第八章：状态机、协程、宏和序曲</h2><p>本章介绍了一些高级主题，包括状态机（state machines）、协程（coroutines）、过程宏（procedural macros）和序曲（preludes）。状态机是一种用于管理对象状态的模式 。协程是一种轻量级的线程，可以暂停和恢复执行 。过程宏是一种用于生成代码的宏，可以在编译时操作代码的抽象语法树 。序曲则是一组常用的导入项，可以简化代码 。</p><ul><li><p>主要内容</p><ul><li><p><strong>状态机</strong>：介绍了如何使用trait来实现状态机，并通过类型系统来确保状态的正确性 。</p></li><li><p><strong>协程</strong>：讲解了协程的概念和用法，包括如何使用<code>Coroutine</code> trait来创建协程 。</p></li><li><p><strong>过程宏</strong>：详细讲解了过程宏的类型和用法，包括函数式宏、派生宏和属性宏 。</p></li><li><p><strong>序曲</strong>：介绍了序曲的概念和用法，以及如何使用<code>pub use</code>来简化导入 。</p></li><li><p><strong>示例代码</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#75715e>#[derive(Debug)]</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>enum</span> <span style=color:#a6e22e>ResumeResult</span> {
+</span></span><span style=display:flex><span>    Invalid,
+</span></span><span style=display:flex><span>   Anonymous(Session<span style=color:#f92672>&lt;</span>Anonymous<span style=color:#f92672>&gt;</span>),
+</span></span><span style=display:flex><span>    Authenticated(Session<span style=color:#f92672>&lt;</span>Authenticated<span style=color:#f92672>&gt;</span>),
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>impl</span> Session<span style=color:#f92672>&lt;</span>Initial<span style=color:#f92672>&gt;</span> {
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>/// Returns a new session, defaulting to the anonymous state
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span>    <span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>new</span>() -&gt; <span style=color:#a6e22e>Session</span><span style=color:#f92672>&lt;</span>Anonymous<span style=color:#f92672>&gt;</span> {
+</span></span><span style=display:flex><span>        Session::<span style=color:#f92672>&lt;</span>Anonymous<span style=color:#f92672>&gt;</span> {
+</span></span><span style=display:flex><span>            session_id: <span style=color:#a6e22e>Uuid</span>::new_v4(),
+</span></span><span style=display:flex><span>           props: <span style=color:#a6e22e>HashMap</span>::new(),
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>     }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#66d9ef>use</span> core::<span style=color:#66d9ef>f64</span>::consts::<span style=color:#66d9ef>PI</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>use</span> std::ops::{Coroutine, CoroutineState};
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>use</span> std::pin::Pin;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> yield_pi <span style=color:#f92672>=</span> <span style=color:#75715e>#[coroutine]</span>
+</span></span><span style=display:flex><span>         <span style=color:#f92672>||</span> {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>yield</span> <span style=color:#66d9ef>PI</span>;
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;Coroutine complete!&#34;</span>
+</span></span><span style=display:flex><span>         };
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>loop</span> {
+</span></span><span style=display:flex><span>         <span style=color:#66d9ef>match</span> Pin::new(<span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> yield_pi).resume(()) {
+</span></span><span style=display:flex><span>             CoroutineState::Yielded(val) <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>                  dbg!(<span style=color:#f92672>&amp;</span>val);
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>             CoroutineState::Complete(val) <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>                dbg!(<span style=color:#f92672>&amp;</span>val);
+</span></span><span style=display:flex><span>               <span style=color:#66d9ef>break</span>;
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>         }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></li></ul></li></ul><h2 id=第四部分问题避免>第四部分：问题避免</h2><h3 id=第九章不可变性>第九章：不可变性</h3><p>本章强调了不可变性的重要性，并讨论了如何在Rust中有效地使用不可变数据。不可变数据可以减少并发编程中的错误，并提高代码的可读性 。Rust提供了多种工具来帮助开发者使用不可变数据，包括<code>ToOwned</code> trait、<code>Cow</code>类型以及<code>im</code>和<code>rpds</code>等crate 。</p><ul><li><p><strong>主要内容</strong></p><ul><li><p><strong>不可变性的优点</strong>：讨论了不可变性的优点，包括提高代码的可读性、减少并发错误等 。</p></li><li><p><strong>Rust中的不可变性</strong>：讲解了Rust中不可变性的实现方式，包括如何使用<code>let</code>关键字来声明不可变变量 。</p></li><li><p><strong><code>ToOwned</code> trait</strong>：介绍了<code>ToOwned</code> trait的概念和用法，包括如何将引用转换为拥有所有权的值 。</p></li><li><p><strong><code>Cow</code>类型</strong>：详细讲解了<code>Cow</code>类型的概念和用法，包括如何使用<code>Cow</code>类型进行写时复制 。</p></li><li><p><strong><code>im</code>和<code>rpds</code> crate</strong>：介绍了<code>im</code>和<code>rpds</code> crate，以及如何使用它们来创建不可变数据结构 。</p></li><li><p><strong>示例代码</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>trait</span> ToOwned {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>type</span> <span style=color:#a6e22e>Owned</span>: <span style=color:#a6e22e>Borrow</span><span style=color:#f92672>&lt;</span>Self<span style=color:#f92672>&gt;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>to_owned</span>(<span style=color:#f92672>&amp;</span>self) -&gt; <span style=color:#a6e22e>Self</span>::Owned;
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>clone_into</span>(<span style=color:#f92672>&amp;</span>self, target: <span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>mut</span> Self::Owned) { <span style=color:#75715e>/* ... */</span> }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></li></ul><p>pub enum Cow&lt;‘a, B> where B: ‘a + ToOwned + ?Sized, { Borrowed(&‘a B), Owned(::Owned), } ``rust #[derive(Debug, Clone)] struct CowList&lt;‘a> { cows: Cow&lt;‘a, [String]>, }</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#66d9ef>impl</span><span style=color:#f92672>&lt;</span><span style=color:#a6e22e>&#39;a</span><span style=color:#f92672>&gt;</span> CowList<span style=color:#f92672>&lt;</span><span style=color:#a6e22e>&#39;a</span><span style=color:#f92672>&gt;</span> {
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>add_cow</span>(<span style=color:#f92672>&amp;</span>self, cow: <span style=color:#66d9ef>&amp;</span><span style=color:#66d9ef>str</span>) -&gt; <span style=color:#a6e22e>Self</span> {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> new_cows <span style=color:#f92672>=</span> self.clone();
+</span></span><span style=display:flex><span>       new_cows.cows.to_mut().push(
+</span></span><span style=display:flex><span>          cow.to_string()
+</span></span><span style=display:flex><span>        );
+</span></span><span style=display:flex><span>       new_cows
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>```</span>
+</span></span></code></pre></div></li></ul><h3 id=第十章反模式>第十章：反模式</h3><p>本章讨论了一些在Rust中常见的反模式，包括使用<code>unsafe</code>代码、使用<code>unwrap()</code>、不使用<code>Vec</code>、过度使用<code>clone()</code>、使用<code>Deref</code>来模拟多态、使用全局数据和单例模式。反模式是指在特定或所有情况下被认为有害的编程实践。作者强调，避免反模式的关键在于理解语言的特性，并遵循最佳实践。</p><ul><li><p>主要内容</p><ul><li><p><strong>反模式的定义</strong>：讨论了反模式的概念，并强调了反模式往往是由于对语言的误解或缺乏经验造成的。</p></li><li><p><strong><code>unsafe</code>代码</strong>：讲解了<code>unsafe</code>代码的使用场景和风险，并强调了应该尽可能避免使用<code>unsafe</code>代码。</p></li><li><p><strong><code>unwrap()</code></strong>：讨论了<code>unwrap()</code>的用法和风险，并强调了应该尽可能使用错误处理机制来避免<code>panic</code> 。</p></li><li><p><strong><code>Vec</code>类型</strong>：强调了<code>Vec</code>类型在Rust中的重要性，并讨论了应该尽可能使用<code>Vec</code>类型来存储数据 。</p></li><li><p><strong><code>clone()</code></strong>：讨论了<code>clone()</code>的使用场景和风险，并强调了应该避免过度使用<code>clone()</code> 。</p></li><li><p><strong><code>Deref</code></strong>：讲解了如何使用<code>Deref</code>来模拟多态，并强调了应该尽可能使用trait对象或泛型来实现多态 。</p></li><li><p><strong>全局数据和单例模式</strong>：讨论了全局数据和单例模式的风险，并建议使用更安全的方法来管理状态 。</p></li><li><p><strong>示例代码</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span>   <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>insert</span>(<span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> self, index: <span style=color:#66d9ef>usize</span>, element: <span style=color:#a6e22e>T</span>) {
+</span></span><span style=display:flex><span>     <span style=color:#75715e>#[cold]</span>
+</span></span><span style=display:flex><span>     <span style=color:#75715e>#[cfg_attr(not(feature = </span><span style=color:#e6db74>&#34;panic_immediate_abort&#34;</span><span style=color:#75715e>), inline(never))]</span>
+</span></span><span style=display:flex><span>      <span style=color:#75715e>#[track_caller]</span>
+</span></span><span style=display:flex><span>       <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>assert_failed</span>(index: <span style=color:#66d9ef>usize</span>, len: <span style=color:#66d9ef>usize</span>) -&gt; <span style=color:#f92672>!</span> {
+</span></span><span style=display:flex><span>        panic!(<span style=color:#e6db74>&#34;insertion index (is </span><span style=color:#e6db74>{index}</span><span style=color:#e6db74>) should be &lt;= len (is </span><span style=color:#e6db74>{len}</span><span style=color:#e6db74>)&#34;</span>);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>     <span style=color:#66d9ef>let</span> len <span style=color:#f92672>=</span> self.len();
+</span></span><span style=display:flex><span>     <span style=color:#66d9ef>if</span> len <span style=color:#f92672>==</span> self.buf.capacity() {
+</span></span><span style=display:flex><span>        self.reserve(<span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>unsafe</span> {
+</span></span><span style=display:flex><span>       <span style=color:#66d9ef>let</span> p <span style=color:#f92672>=</span> self.as_mut_ptr().add(index);
+</span></span><span style=display:flex><span>           <span style=color:#66d9ef>if</span> index <span style=color:#f92672>&lt;</span> len {
+</span></span><span style=display:flex><span>             ptr::copy(p, p.add(<span style=color:#ae81ff>1</span>), len <span style=color:#f92672>-</span> index);
+</span></span><span style=display:flex><span>        } <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> index <span style=color:#f92672>==</span> len {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>       } <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>             assert_failed(index, len);
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span> }
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span>    <span style=color:#66d9ef>trait</span> Animal {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>speak</span>(<span style=color:#f92672>&amp;</span>self) -&gt; <span style=color:#66d9ef>&amp;</span><span style=color:#66d9ef>str</span>;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>name</span>(<span style=color:#f92672>&amp;</span>self) -&gt; <span style=color:#66d9ef>&amp;</span><span style=color:#66d9ef>str</span>;
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>Dog</span> {
+</span></span><span style=display:flex><span>        name: String,
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>     <span style=color:#66d9ef>impl</span> Dog {
+</span></span><span style=display:flex><span>       <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>new</span>(name: <span style=color:#66d9ef>&amp;</span><span style=color:#66d9ef>str</span>) -&gt; <span style=color:#a6e22e>Self</span> {
+</span></span><span style=display:flex><span>             Self {
+</span></span><span style=display:flex><span>               name: <span style=color:#a6e22e>name</span>.to_string(),
+</span></span><span style=display:flex><span>          }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>     }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>     <span style=color:#66d9ef>impl</span> Animal <span style=color:#66d9ef>for</span> Dog {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>speak</span>(<span style=color:#f92672>&amp;</span>self) -&gt; <span style=color:#66d9ef>&amp;</span><span style=color:#66d9ef>str</span> {
+</span></span><span style=display:flex><span>             <span style=color:#e6db74>&#34;Woof!&#34;</span>
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>         <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>name</span>(<span style=color:#f92672>&amp;</span>self) -&gt; <span style=color:#66d9ef>&amp;</span><span style=color:#66d9ef>str</span> {
+</span></span><span style=display:flex><span>              <span style=color:#f92672>&amp;</span>self.name
+</span></span><span style=display:flex><span>         }
+</span></span><span style=display:flex><span>    }
+</span></span></code></pre></div></li></ul></li></ul><p><strong>总结</strong></p><p>本书全面介绍了Rust的各种编程模式、习惯和约定，并深入探讨了Rust的核心特性，包括泛型、trait、模式匹配、宏、错误处理和不可变性。本书不仅适合想要深入学习Rust的开发者，也适合希望提高代码质量和可维护性的开发者。通过学习本书，读者可以像Rustacean一样编写高效、可维护的Rust代码。</p></article></div></div><div class=row><div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1"><hr class=m-0></div><div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 pt-2"><div class=blog-tags><a href=https://book-excerpts.checkitout.dev/tags/rust/>Rust</a></div></div><div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 pt-4"></div><div class="col-lg-8 offset-lg-2 col-md-12 offset-md-1 pt-4"><ul class="list-group list-group-horizontal" style=flex-direction:row><li class="list-group-item b-0 p-0"><a type=button class="btn btn-dark" role=button href=https://book-excerpts.checkitout.dev/posts/write-powerful-rust-macros/ data-toggle=tooltip data-placement=top title="Write Powerful Rust Macros">&larr;
+Previous Post</a></li><li class="list-group-item ms-auto b-0 p-0"><a type=button class="btn btn-dark" role=button href=https://book-excerpts.checkitout.dev/posts/podman-in-action/ data-toggle=tooltip data-placement=top title="Podman in Action">Next Post
+&rarr;</a></li></ul></div><div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 pt-4"></div></div></div><div></div><footer><div class=container><div class=row><div class=col-md-12><ul class="list-inline list-group list-group-horizontal text-center footer-links d-flex justify-content-center flex-row"></ul></div></div><div class=row><div class=col-md-12><p class="credits copyright text-muted">毕方
+&nbsp;&bull;&nbsp;&copy;
+2025
+&nbsp;&bull;&nbsp;
+<a href=https://book-excerpts.checkitout.dev/>帛书文摘</a></p><p class="credits theme-by text-muted">Powered by <a href=https://gohugo.io>Hugo</a> & <a href=https://github.com/binokochumolvarghese/lightbi-hugo>Lightbi.</a>&nbsp; Made with ❤ by <a href=https://binovarghese.com>Bino</a></p></div></div></div></footer><script src=https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js integrity=sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL crossorigin=anonymous></script></body></html>

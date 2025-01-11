@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>容器化 on 帛书文摘</title><link>https://book-excerpts.checkitout.dev/tags/%E5%AE%B9%E5%99%A8%E5%8C%96/</link><description>Recent content in 容器化 on 帛书文摘</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 02 Jan 2025 10:35:35 +0000</lastBuildDate><atom:link href="https://book-excerpts.checkitout.dev/tags/%E5%AE%B9%E5%99%A8%E5%8C%96/index.xml" rel="self" type="application/rss+xml"/><item><title>Podman in Action</title><link>https://book-excerpts.checkitout.dev/posts/podman-in-action/</link><pubDate>Thu, 02 Jan 2025 10:35:35 +0000</pubDate><guid>https://book-excerpts.checkitout.dev/posts/podman-in-action/</guid><description>&lt;p>《Podman in Action》是由Red Hat的高级杰出工程师Daniel Walsh撰写的一本关于Podman容器管理器的权威指南。本书详细介绍了Podman的各个方面，包括其基础、高级功能、安全性以及在实际生产环境中的应用。Podman是一个无守护进程的容器引擎，旨在提供更灵活、更安全的方式来管理和运行容器。&lt;/p>
+&lt;p>本书分为四个主要部分：基础、高级主题、容器安全性和附录。基础部分介绍了Podman的基本概念、命令行界面、卷的使用以及Pod的概念。高级主题部分深入探讨了Podman与systemd的集成、Kubernetes的兼容性、Podman作为服务的使用，以及如何在边缘设备上运行容器化应用程序。容器安全性部分详细讲解了Podman如何利用Linux内核的安全特性来隔离和保护容器，包括SELinux、seccomp、Linux能力、文件系统隔离等。附录部分提供了关于OCI运行时、Podman的安装、Podman开源社区以及如何贡献代码的额外信息。&lt;/p>
+&lt;p>通过本书，读者将能够全面了解Podman的功能和优势，学会如何使用Podman来构建、管理和运行容器化应用程序，以及如何在生产环境中部署和维护Podman容器。此外，本书还提供了大量实用的示例和详细的解释，帮助读者更好地理解和掌握Podman的使用。&lt;/p>
+&lt;h3 id="第一章基础">第一章：基础&lt;/h3>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Podman简介&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>Podman是一个无守护进程的容器引擎，用于在Linux系统上开发、管理和运行OCI容器。&lt;/li>
+&lt;li>Podman与Docker共享相同的命令行界面，但支持更多的功能，如无守护进程模式、systemd集成、用户命名空间支持等。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Podman与Docker的比较&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>Podman支持所有OCI和Docker镜像，并可以从容器注册表（如quay.io和docker.io）中拉取和运行容器镜像。&lt;/li>
+&lt;li>Podman使用fork/exec模型来启动容器，而Docker则使用守护进程模型。&lt;/li>
+&lt;li>Podman完全支持用户命名空间，允许用户以非特权用户身份运行容器。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Podman的基本用法&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>使用&lt;code>podman run&lt;/code>命令来启动容器，&lt;code>podman ps&lt;/code>命令来列出正在运行的容器，&lt;code>podman stop&lt;/code>命令来停止容器，以及&lt;code>podman rm&lt;/code>命令来删除容器。&lt;/li>
+&lt;li>Podman还支持从容器创建镜像（使用&lt;code>podman commit&lt;/code>命令）和将镜像推送到容器注册表（使用&lt;code>podman push&lt;/code>命令）。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章介绍了Podman的基本概念、与Docker的比较以及Podman的基本用法。读者将了解Podman作为一个无守护进程的容器引擎的优势，以及如何使用Podman来启动、停止、删除容器和从容器创建镜像。&lt;/p>
+&lt;h3 id="第二章命令行界面">第二章：命令行界面&lt;/h3>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Podman命令行基础&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>Podman的命令行界面与Docker非常相似，使得Docker用户能够轻松过渡到Podman。&lt;/li>
+&lt;li>Podman命令分为容器命令、镜像命令、卷命令、Pod命令和系统命令等几大类。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>容器的生命周期管理&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>使用&lt;code>podman create&lt;/code>命令来创建一个容器但不启动它，使用&lt;code>podman start&lt;/code>命令来启动已创建的容器。&lt;/li>
+&lt;li>可以使用&lt;code>podman attach&lt;/code>命令连接到正在运行的容器的终端，使用&lt;code>podman exec&lt;/code>命令在正在运行的容器中执行命令。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>镜像管理&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>使用&lt;code>podman images&lt;/code>命令来列出本地镜像，使用&lt;code>podman image inspect&lt;/code>命令来查看镜像的详细信息。&lt;/li>
+&lt;li>可以使用&lt;code>podman tag&lt;/code>命令为镜像添加标签，使用&lt;code>podman push&lt;/code>命令将镜像推送到远程容器注册表。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章详细介绍了Podman的命令行界面，包括容器的生命周期管理、镜像管理等方面。读者将学会如何使用Podman命令行来创建、启动、停止、删除容器，以及查看和管理本地和远程镜像。&lt;/p>
+&lt;h3 id="第三章卷">第三章：卷&lt;/h3>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>卷的概念&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>卷是一种用于在容器和主机系统之间共享数据的机制，可以持久化存储数据并避免数据丢失。&lt;/li>
+&lt;li>Podman支持多种类型的卷，包括命名卷、绑定挂载卷和临时卷。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>使用命名卷&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>命名卷是Podman管理的一种特殊类型的卷，可以在多个容器之间共享。&lt;/li>
+&lt;li>使用&lt;code>podman volume create&lt;/code>命令来创建命名卷，使用&lt;code>podman volume inspect&lt;/code>命令来查看卷的详细信息。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>绑定挂载卷&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>绑定挂载卷允许将主机系统上的目录或文件挂载到容器中。&lt;/li>
+&lt;li>使用&lt;code>--volume&lt;/code>或&lt;code>-v&lt;/code>选项来指定绑定挂载卷，例如&lt;code>podman run -v /host/path:/container/path image&lt;/code>。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章介绍了Podman中的卷机制，包括卷的概念、命名卷和绑定挂载卷的使用。读者将学会如何使用卷来在容器和主机系统之间共享数据，并实现数据的持久化存储。&lt;/p></description></item></channel></rss>

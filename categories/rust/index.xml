@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Rust on 帛书文摘</title><link>https://book-excerpts.checkitout.dev/categories/rust/</link><description>Recent content in Rust on 帛书文摘</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 08 Jan 2025 09:32:56 +0000</lastBuildDate><atom:link href="https://book-excerpts.checkitout.dev/categories/rust/index.xml" rel="self" type="application/rss+xml"/><item><title>Asynchronous Programming In Rust</title><link>https://book-excerpts.checkitout.dev/posts/asynchronous-programming-in-rust/</link><pubDate>Wed, 08 Jan 2025 09:32:56 +0000</pubDate><guid>https://book-excerpts.checkitout.dev/posts/asynchronous-programming-in-rust/</guid><description>&lt;p>《Asynchronous Programming in Rust》是一本深入探讨Rust语言中异步编程的书籍。本书通过构建实际的工作示例，如futures、green threads和运行时，带领读者逐步理解Rust异步编程的核心概念。作者Carl Fredrik Samson具有丰富的Rust编程经验和开源项目贡献经历，他详细介绍了异步编程的基础知识、Rust语言对异步操作的支持、以及如何设计和实现自己的异步运行时。&lt;/p>
+&lt;p>本书首先介绍了并发和异步编程的基本概念，包括多任务处理的演进历史、同步与异步的区别、以及操作系统和CPU在并发处理中的角色。接着，作者探讨了编程语言如何模拟异步程序流，包括线程、green threads、fibers、回调、promises、futures和async/await等不同的方法。此外，还深入解释了操作系统支持的事件队列、系统调用和跨平台抽象的重要性。&lt;/p>
+&lt;p>在掌握了这些基础知识后，本书开始引导读者动手实践。通过创建自己的事件队列、green threads和futures，读者可以深入理解异步编程在Rust中的具体实现。每个章节都包含了详细的代码示例和解释，帮助读者逐步构建自己的异步编程技能。&lt;/p>
+&lt;p>本书还重点介绍了Rust的futures和async/await特性，这是Rust异步编程的核心。作者通过对比stackful和stackless coroutines，详细解释了futures和async/await的工作原理。此外，还讨论了如何设计和实现一个高效的异步运行时，包括反应器模式、执行器模式以及唤醒机制等。&lt;/p>
+&lt;p>最后，本书通过创建一个完整的异步运行时示例，将之前学到的所有知识融会贯通。这个示例展示了如何在Rust中使用futures和async/await来构建高效、可扩展的异步应用程序。&lt;/p>
+&lt;p>本书不仅适合有一定Rust编程经验的开发者，也适合希望从底层开始学习异步编程的开发者。通过本书的学习，读者将能够深入理解Rust异步编程的精髓，并能够在自己的项目中灵活运用这些知识。&lt;/p>
+&lt;h3 id="各章节要点和摘要">各章节要点和摘要&lt;/h3>
+&lt;h4 id="第一部分异步编程基础">第一部分：异步编程基础&lt;/h4>
+&lt;p>&lt;strong>第1章 并发和异步编程：详细概述&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>要点：
+&lt;ul>
+&lt;li>多任务处理的演进历史：从单CPU到多核心处理器的发展。&lt;/li>
+&lt;li>同步与异步的区别：同步编程按顺序执行任务，而异步编程可以并行处理多个任务。&lt;/li>
+&lt;li>并发与并行的区别：并发关注任务调度，而并行关注任务执行。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>摘要&lt;/strong>：本章介绍了并发和异步编程的基本概念，以及它们在计算机硬件和软件发展中的作用。通过对比同步与异步、并发与并行的区别，帮助读者建立对异步编程的基本理解。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>第2章 编程语言如何模拟异步程序流&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>要点：
+&lt;ul>
+&lt;li>线程：操作系统提供的并发执行单位。&lt;/li>
+&lt;li>Green threads/fibers：用户态的轻量级线程，由语言运行时管理。&lt;/li>
+&lt;li>回调、promises和futures：不同的异步编程模型。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>摘要&lt;/strong>：本章探讨了编程语言如何模拟异步程序流，包括线程、green threads、fibers以及回调、promises和futures等不同的方法。通过对比这些方法的优缺点，帮助读者选择适合自己的异步编程模型。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>第3章 理解操作系统支持的事件队列、系统调用和跨平台抽象&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>要点：
+&lt;ul>
+&lt;li>epoll、kqueue和IOCP：不同的操作系统事件通知机制。&lt;/li>
+&lt;li>系统调用：程序与操作系统交互的方式。&lt;/li>
+&lt;li>跨平台抽象：如何编写跨平台的异步代码。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>摘要&lt;/strong>：本章深入解释了操作系统支持的事件队列、系统调用和跨平台抽象的重要性。通过介绍epoll、kqueue和IOCP等不同的事件通知机制，帮助读者理解异步I/O的工作原理。同时，还讨论了如何编写跨平台的异步代码，以提高代码的可移植性。&lt;/li>
+&lt;/ul>
+&lt;h4 id="第二部分事件队列和green-threads">第二部分：事件队列和Green Threads&lt;/h4>
+&lt;p>&lt;strong>第4章 创建自己的事件队列&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>要点：
+&lt;ul>
+&lt;li>epoll的设计和实现：如何使用epoll来创建事件队列。&lt;/li>
+&lt;li>事件循环：如何编写高效的事件循环来处理异步事件。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>摘要&lt;/strong>：本章通过创建一个使用epoll的事件队列示例，向读者展示了如何在Rust中实现高效的事件循环。这个示例不仅帮助读者理解epoll的工作原理，还展示了如何在Rust中编写异步I/O代码。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>第5章 创建自己的Fibers&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>要点：
+&lt;ul>
+&lt;li>Green threads的实现：如何使用Rust创建green threads。&lt;/li>
+&lt;li>栈管理：如何管理green threads的栈内存。&lt;/li>
+&lt;li>上下文切换：如何实现green threads之间的上下文切换。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>摘要&lt;/strong>：本章通过创建一个简单的green threads实现示例，向读者展示了如何在Rust中实现用户态的轻量级线程。这个示例不仅帮助读者理解green threads的工作原理，还展示了如何在Rust中进行栈管理和上下文切换。&lt;/li>
+&lt;/ul>
+&lt;h4 id="第三部分futures和asyncawait在rust中的应用">第三部分：Futures和async/await在Rust中的应用&lt;/h4>
+&lt;p>&lt;strong>第6章 Futures在Rust中的应用&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>要点：
+&lt;ul>
+&lt;li>Futures的定义和工作原理：Rust中的futures是什么，以及它们是如何工作的。&lt;/li>
+&lt;li>Leaf futures和非leaf futures：不同类型的futures及其应用场景。&lt;/li>
+&lt;li>运行时的作用：为什么需要运行时来驱动futures的执行。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>摘要&lt;/strong>：本章介绍了Rust中的futures概念，包括它们的定义、工作原理以及应用场景。通过对比leaf futures和非leaf futures的区别，帮助读者理解futures在异步编程中的作用。同时，还讨论了运行时在驱动futures执行中的重要性。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>第7章 Coroutines和async/await&lt;/strong>&lt;/p></description></item><item><title>Rust Essentials</title><link>https://book-excerpts.checkitout.dev/posts/rust-essentials/</link><pubDate>Thu, 02 Jan 2025 16:24:30 +0000</pubDate><guid>https://book-excerpts.checkitout.dev/posts/rust-essentials/</guid><description>&lt;p>《Rust Essentials》是一本关于Rust编程语言的入门指南，旨在帮助读者快速掌握Rust语言的基础知识，并具备开发Rust项目的能力。Rust是一种新兴的系统级编程语言，以其高性能、内存安全性和并发性而著称。本书通过丰富的示例和详细的解释，引导读者逐步了解Rust的语法、特性以及在实际项目中的应用。&lt;/p>
+&lt;p>书中首先介绍了Rust语言的优势和特点，包括其速度、安全性和并发性。通过与其他编程语言的比较，展示了Rust在内存安全方面的独特优势。接着，详细讲解了Rust的安装、编译器使用以及开发环境的设置，为读者后续的编程实践打下基础。&lt;/p>
+&lt;p>在基础语法部分，本书涵盖了变量、类型、函数、控制结构等核心概念。通过示例代码，展示了如何在Rust中声明变量、定义函数、处理条件分支和循环结构。此外，还介绍了Rust的不可变性机制，这是Rust保证内存安全的重要手段之一。&lt;/p>
+&lt;p>在数据结构方面，本书详细讲解了Rust中的字符串、数组、向量、切片、元组、结构体和枚举等数据类型。通过这些数据类型的介绍，读者可以了解如何在Rust中组织和管理数据。同时，还介绍了Rust的模式匹配功能，这是Rust中一种强大的数据处理方式。&lt;/p>
+&lt;p>在函数式编程特性方面，本书探讨了高阶函数、闭包、迭代器、泛型和特质等概念。这些特性使得Rust在编写简洁、高效和可重用的代码方面具有很大优势。通过示例代码，展示了如何在实际项目中应用这些特性。&lt;/p>
+&lt;p>在内存管理方面，本书深入探讨了Rust的所有权系统、借用检查器以及智能指针等概念。这些机制共同保证了Rust在编译时就能发现内存错误，从而避免了运行时内存泄漏或野指针等问题。此外，还介绍了如何在Rust中安全地处理并发和并行计算。&lt;/p>
+&lt;p>最后，本书还涉及了Rust与其他语言的互操作性、不安全代码的使用场景以及Rust生态系统中的常用库和工具。这些内容对于希望将Rust集成到现有项目或构建大型Rust应用的读者来说非常有用。&lt;/p>
+&lt;p>通过阅读本书，读者将能够全面掌握Rust语言的基础知识，并具备开发实际Rust项目的能力。无论是对于系统级编程的爱好者还是希望提高编程技能的开发者来说，本书都是一本不可多得的入门指南。&lt;/p>
+&lt;h2 id="章节要点及摘要">章节要点及摘要&lt;/h2>
+&lt;h3 id="第1章starting-with-rust">第1章：Starting with Rust&lt;/h3>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>Rust语言的优势：速度、安全性和并发性。&lt;/li>
+&lt;li>Rust与其他语言的比较：特别是与C/C++在内存安全方面的比较。&lt;/li>
+&lt;li>Rust的安装和配置：包括编译器（rustc）和包管理器（Cargo）的安装。&lt;/li>
+&lt;li>第一个Rust程序：通过示例展示如何编写、编译和运行Rust程序。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章首先介绍了Rust语言的主要优势，包括其高性能、内存安全性和并发性。通过与C/C++等语言的比较，展示了Rust在内存安全方面的独特优势。接着，详细讲解了Rust的安装和配置过程，包括编译器和包管理器的安装步骤。最后，通过编写、编译和运行一个简单的Rust程序，帮助读者快速上手Rust编程。&lt;/p>
+&lt;h3 id="第2章using-variables-and-types">第2章：Using Variables and Types&lt;/h3>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>变量和常量的声明：包括全局常量、可变和不可变变量。&lt;/li>
+&lt;li>原始数据类型：如整数、浮点数、字符和布尔值等。&lt;/li>
+&lt;li>类型注解和类型推断：Rust中的类型系统及其工作方式。&lt;/li>
+&lt;li>表达式和语句：Rust中的表达式和语句的区别及其用法。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章详细讲解了Rust中的变量和类型系统。首先介绍了变量和常量的声明方式，包括全局常量和可变与不可变变量的区别。接着介绍了Rust中的原始数据类型，如整数、浮点数、字符和布尔值等，并解释了它们在内存中的存储方式。此外，还讨论了Rust中的类型注解和类型推断机制，以及表达式和语句的区别和用法。通过示例代码，展示了如何在Rust中声明变量、使用类型注解和编写表达式和语句。&lt;/p>
+&lt;h3 id="第3章using-functions-and-control-structures">第3章：Using Functions and Control Structures&lt;/h3>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>函数的定义和调用：包括函数参数、返回值和作用域等概念。&lt;/li>
+&lt;li>控制结构：如条件分支（if-else语句）和循环结构（while和for循环）。&lt;/li>
+&lt;li>文档注释和属性：如何在Rust代码中添加文档注释和使用属性。&lt;/li>
+&lt;li>测试：使用Cargo进行单元测试的基本方法。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章主要介绍了Rust中的函数和控制结构。首先讲解了函数的定义和调用方式，包括函数参数、返回值和作用域等概念。接着介绍了Rust中的控制结构，如条件分支和循环结构，并通过示例代码展示了它们的使用方法。此外，还讨论了如何在Rust代码中添加文档注释和使用属性来提供额外的信息或控制编译行为。最后，介绍了使用Cargo进行单元测试的基本方法，帮助读者确保代码的正确性和稳定性。&lt;/p>
+&lt;h3 id="第4章structuring-data-and-matching-patterns">第4章：Structuring Data and Matching Patterns&lt;/h3>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>数据类型：包括字符串、数组、向量、切片、元组、结构体和枚举等。&lt;/li>
+&lt;li>模式匹配：如何在Rust中使用模式匹配来处理数据。&lt;/li>
+&lt;li>控制台输入：如何从控制台获取用户输入并处理。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章详细讲解了Rust中的数据类型和模式匹配功能。首先介绍了Rust中的各种数据类型，如字符串、数组、向量、切片、元组、结构体和枚举等，并解释了它们的使用场景和特性。接着介绍了如何在Rust中使用模式匹配来处理数据，这是一种强大的数据处理方式，可以使代码更加简洁和易于理解。最后，讨论了如何从控制台获取用户输入并处理，这是开发交互式应用程序时必不可少的技能。&lt;/p>
+&lt;h3 id="第5章generalizing-code-with-higher-order-functions-and-parametrization">第5章：Generalizing Code with Higher-order Functions and Parametrization&lt;/h3>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>高阶函数和闭包：如何在Rust中使用高阶函数和闭包来编写更加灵活和可重用的代码。&lt;/li>
+&lt;li>迭代器：Rust中的迭代器模式及其使用方法。&lt;/li>
+&lt;li>泛型和特质：如何在Rust中使用泛型和特质来编写通用代码。&lt;/li>
+&lt;li>错误处理：Rust中的错误处理机制及其使用方法。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章主要介绍了Rust中的高阶函数、闭包、迭代器、泛型和特质等概念。首先讲解了高阶函数和闭包的使用方法，它们可以使代码更加灵活和可重用。接着介绍了Rust中的迭代器模式，这是一种强大的数据处理方式，可以使代码更加简洁和高效。此外，还讨论了泛型和特质的使用方法，它们可以使代码更加通用和可复用。最后，介绍了Rust中的错误处理机制，帮助读者编写更加健壮和可靠的代码。&lt;/p>
+&lt;h3 id="第6章pointers-and-memory-safety">第6章：Pointers and Memory Safety&lt;/h3>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p></description></item><item><title>Idiomatic Rust</title><link>https://book-excerpts.checkitout.dev/posts/idiomatic-rust/</link><pubDate>Wed, 01 Jan 2025 21:19:23 +0000</pubDate><guid>https://book-excerpts.checkitout.dev/posts/idiomatic-rust/</guid><description>&lt;h1 id="像rustacean一样编写惯用的rust代码">像Rustacean一样编写惯用的Rust代码&lt;/h1>
+&lt;p>本书是作者Brenden Matthews继《Code Like a Pro in Rust》之后的又一本Rust编程指南，本书重点关注Rust的惯用代码模式、习惯和约定。本书的灵感来源于经典的《设计模式：可复用面向对象软件的要素》，但并不直接翻译原书的模式，而是专注于Rust特有的模式和实践。本书的目标是帮助读者像Rustacean（Rust的资深开发者）一样编写代码，而不仅仅是了解Rust的语法。&lt;/p>
+&lt;p>本书分为四个部分：&lt;/p>
+&lt;ul>
+&lt;li>第一部分：基础构建模块&lt;/li>
+&lt;li>第二部分：核心模式&lt;/li>
+&lt;li>第三部分：高级模式&lt;/li>
+&lt;li>第四部分：问题避免&lt;/li>
+&lt;/ul>
+&lt;h2 id="第一部分基础构建模块">第一部分：基础构建模块&lt;/h2>
+&lt;h3 id="第一章rust风格模式">第一章：Rust风格模式&lt;/h3>
+&lt;p>本章概述了本书的内容，包括Rust的各种模式、习惯和约定。作者将模式分为三个层次：惯用语（idioms）、设计模式（design patterns）和架构（architecture）。惯用语是最低层次的抽象，设计模式是中间层次，而架构是最高层次的抽象。本章还强调了Rust社区的重要性，以及Rust语言的独特之处在于其完全由社区驱动的演变。&lt;/p>
+&lt;ul>
+&lt;li>主要内容
+&lt;ul>
+&lt;li>本书涵盖了Rust的各种模式、惯用语和约定。&lt;/li>
+&lt;li>强调了Rust社区在语言发展中的作用。&lt;/li>
+&lt;li>介绍了模式、设计模式和架构之间的层次关系。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="第二章rust的基础构建模块">第二章：Rust的基础构建模块&lt;/h3>
+&lt;p>本章深入探讨了Rust的几个核心构建模块：泛型（generics）、trait和模式匹配（pattern matching）。泛型允许编写可以应用于多种类型的代码，而无需为每种类型都编写重复的代码。Trait类似于其他语言中的接口，允许定义共享行为。模式匹配则是一种强大的控制流机制，用于解构数据结构。本章还讨论了trait在面向对象编程中的应用，以及如何使用trait来实现多态性。&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>主要内容&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>泛型&lt;/strong>：介绍了泛型的基本概念、使用方法和优点，包括类型参数、trait约束等。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Trait&lt;/strong>：深入讲解了trait的定义、实现和应用，包括trait对象、动态分发等。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>模式匹配&lt;/strong>：详细介绍了模式匹配的语法和用法，包括如何匹配不同类型的数据结构。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>示例代码&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-rust" data-lang="rust">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">trait&lt;/span> MyTrait {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fn&lt;/span> &lt;span style="color:#a6e22e">trait_hello&lt;/span>(&lt;span style="color:#f92672">&amp;amp;&lt;/span>self);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fn&lt;/span> &lt;span style="color:#a6e22e">as_any&lt;/span>(&lt;span style="color:#f92672">&amp;amp;&lt;/span>self) -&amp;gt; &lt;span style="color:#66d9ef">&amp;amp;&lt;/span>&lt;span style="color:#a6e22e">dyn&lt;/span> std::any::Any;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">MyStruct1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">impl&lt;/span> MyStruct1 {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fn&lt;/span> &lt;span style="color:#a6e22e">struct_hello&lt;/span>(&lt;span style="color:#f92672">&amp;amp;&lt;/span>self) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> println!(&lt;span style="color:#e6db74">&amp;#34;Hello, world! from MyStruct1&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">impl&lt;/span> MyTrait &lt;span style="color:#66d9ef">for&lt;/span> MyStruct1 {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fn&lt;/span> &lt;span style="color:#a6e22e">trait_hello&lt;/span>(&lt;span style="color:#f92672">&amp;amp;&lt;/span>self) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self.struct_hello();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fn&lt;/span> &lt;span style="color:#a6e22e">as_any&lt;/span>(&lt;span style="color:#f92672">&amp;amp;&lt;/span>self) -&amp;gt; &lt;span style="color:#66d9ef">&amp;amp;&lt;/span>&lt;span style="color:#a6e22e">dyn&lt;/span> std::any::Any {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">MyStruct2&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">impl&lt;/span> MyStruct2 {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fn&lt;/span> &lt;span style="color:#a6e22e">struct_hello&lt;/span>(&lt;span style="color:#f92672">&amp;amp;&lt;/span>self) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> println!(&lt;span style="color:#e6db74">&amp;#34;Hello, world! from MyStruct2&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">impl&lt;/span> MyTrait &lt;span style="color:#66d9ef">for&lt;/span> MyStruct2 {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fn&lt;/span> &lt;span style="color:#a6e22e">trait_hello&lt;/span>(&lt;span style="color:#f92672">&amp;amp;&lt;/span>self) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self.struct_hello();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fn&lt;/span> &lt;span style="color:#a6e22e">as_any&lt;/span>(&lt;span style="color:#f92672">&amp;amp;&lt;/span>self) -&amp;gt; &lt;span style="color:#66d9ef">&amp;amp;&lt;/span>&lt;span style="color:#a6e22e">dyn&lt;/span> std::any::Any {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="第三章代码流">第三章：代码流&lt;/h3>
+&lt;p>本章介绍了Rust中控制代码流的几种方法，包括模式匹配、闭包和迭代器。模式匹配不仅可以用于解构数据，还可以用于控制代码的执行路径。闭包是一种匿名函数，可以捕获其环境中的变量。迭代器则是一种用于遍历集合的抽象。本章还讨论了函数式编程在Rust中的应用，以及如何使用迭代器进行链式操作。&lt;/p></description></item><item><title>Write Powerful Rust Macros</title><link>https://book-excerpts.checkitout.dev/posts/write-powerful-rust-macros/</link><pubDate>Wed, 01 Jan 2025 21:17:16 +0000</pubDate><guid>https://book-excerpts.checkitout.dev/posts/write-powerful-rust-macros/</guid><description>&lt;p>这本书《Write Powerful Rust Macros》旨在教导读者如何使用 Rust 的宏进行元编程。本书从元编程的基础概念讲起，逐步深入到各种宏的类型和实际应用，并通过大量的示例和练习，帮助读者掌握编写强大 Rust 宏的技能。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>第一章：元编程入门&lt;/strong>
+&lt;ul>
+&lt;li>介绍了元编程的概念，即编写可以操作或生成其他代码的代码 [第一章]。&lt;/li>
+&lt;li>讨论了 Rust 中元编程的主要方式——&lt;strong>宏&lt;/strong>，并强调了其重要性 [第一章]。&lt;/li>
+&lt;li>列举了宏的适用场景，如消除重复代码、实现代码生成和抽象复杂模式 [第一章]。&lt;/li>
+&lt;li>同时指出了不应使用宏的情况，如过度使用、复杂逻辑和潜在的性能问题 [第一章]。&lt;/li>
+&lt;li>概述了本书的重点是 Rust 宏 [第一章]。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>第二章：声明宏（Declarative Macros）&lt;/strong>
+&lt;ul>
+&lt;li>介绍了声明宏的基础知识，包括语法、匹配器（matcher）和转录器（transcriber）。&lt;/li>
+&lt;li>解释了如何使用 &lt;strong>&lt;code>macro_rules!&lt;/code>&lt;/strong> 创建声明宏。&lt;/li>
+&lt;li>讨论了&lt;strong>代码展开&lt;/strong>（expanding）的概念，并介绍了 &lt;code>trace_macros!&lt;/code> 和 &lt;code>log_syntax!&lt;/code> 等工具来辅助理解宏的展开过程。&lt;/li>
+&lt;li>讲解了如何使用 &lt;strong>&lt;code>$()&lt;/code>&lt;/strong> 来捕获和引用宏变量。&lt;/li>
+&lt;li>说明了如何使用 &lt;strong>&lt;code>$()&lt;/code>&lt;/strong> 匹配不同的输入类型，如 &lt;code>ident&lt;/code>、&lt;code>literal&lt;/code>、&lt;code>expr&lt;/code>、&lt;code>ty&lt;/code> 等。&lt;/li>
+&lt;li>展示了如何使用声明宏实现 &lt;strong>DSL (领域特定语言)&lt;/strong>。&lt;/li>
+&lt;li>解释了如何使用 &lt;strong>newtype&lt;/strong> 来提高类型系统的表达能力。&lt;/li>
+&lt;li>讨论了如何使用声明宏实现递归。&lt;/li>
+&lt;li>介绍了如何通过&lt;strong>组合&lt;/strong>（compose）宏来增强代码的灵活性。&lt;/li>
+&lt;li>讲解了&lt;strong>柯里化&lt;/strong>（currying）的概念，并演示了如何使用宏实现柯里化。&lt;/li>
+&lt;li>讨论了&lt;strong>卫生性&lt;/strong>（hygiene）在宏中的作用，以及如何避免命名冲突。&lt;/li>
+&lt;li>展示了不同括号在宏调用中的使用方法。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>第三章：过程宏（Procedural Macros）&lt;/strong>
+&lt;ul>
+&lt;li>介绍了过程宏的基本概念和分类：派生宏（derive macros）、属性宏（attribute macros）和函数式宏（function-like macros）。&lt;/li>
+&lt;li>详细讲解了如何设置&lt;strong>过程宏项目&lt;/strong>，包括创建库项目，添加依赖项等。&lt;/li>
+&lt;li>解释了&lt;strong>派生宏&lt;/strong>的工作原理，以及如何使用 &lt;code>#[proc_macro_derive]&lt;/code> 注解创建派生宏。&lt;/li>
+&lt;li>说明了如何使用 &lt;code>quote!&lt;/code> 宏生成代码。&lt;/li>
+&lt;li>讲解了如何解析输入&lt;strong>抽象语法树（AST）&lt;/strong>，并获取结构体的名称。&lt;/li>
+&lt;li>强调了过程宏必须位于库的根目录。&lt;/li>
+&lt;li>提供了一个派生宏的练习。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>第四章：使用属性宏修改字段&lt;/strong>
+&lt;ul>
+&lt;li>介绍了&lt;strong>属性宏&lt;/strong>的概念，以及如何使用 &lt;code>#[proc_macro_attribute]&lt;/code> 注解创建属性宏。&lt;/li>
+&lt;li>讲解了属性宏与派生宏的区别，并说明了属性宏可以修改现有代码。&lt;/li>
+&lt;li>演示了如何使用属性宏来使结构体的字段公开。&lt;/li>
+&lt;li>说明了如何使用 &lt;strong>&lt;code>ParseStream&lt;/code>&lt;/strong> 来解析输入流。&lt;/li>
+&lt;li>强调了良好的错误处理在生产级宏中的重要性。&lt;/li>
+&lt;li>介绍了 &lt;strong>&lt;code>no-panic&lt;/code>&lt;/strong> 宏的实现原理，以及如何使用宏来证明函数不会发生 panic。&lt;/li>
+&lt;li>提供了一个属性宏的练习。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>第五章：函数式宏&lt;/strong>
+&lt;ul>
+&lt;li>讲解了&lt;strong>函数式宏&lt;/strong>（function-like macros）的工作原理，以及如何使用 &lt;code>#[proc_macro]&lt;/code> 注解创建函数式宏。&lt;/li>
+&lt;li>解释了函数式宏可以使用 &lt;code>!&lt;/code> 操作符在代码的几乎任何位置调用。&lt;/li>
+&lt;li>讨论了&lt;strong>卫生性&lt;/strong>在过程宏中的重要性，以及如何使用 &lt;code>call_site&lt;/code> 和 &lt;code>mixed_site&lt;/code> 来控制 span。&lt;/li>
+&lt;li>展示了如何使用函数式宏来扩展语言的功能。&lt;/li>
+&lt;li>强调了不同类型宏的适用场景。&lt;/li>
+&lt;li>介绍了 &lt;strong>&lt;code>format_ident!&lt;/code>&lt;/strong> 宏，用于动态创建标识符。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>第六章：测试构建器宏&lt;/strong>
+&lt;ul>
+&lt;li>通过一个&lt;strong>构建器宏&lt;/strong>的例子，详细讲解了如何测试过程宏。&lt;/li>
+&lt;li>介绍了&lt;strong>白盒测试&lt;/strong>和&lt;strong>黑盒测试&lt;/strong>的概念，并说明了它们在宏测试中的应用。&lt;/li>
+&lt;li>演示了如何使用 &lt;code>quote!&lt;/code> 宏生成测试代码。&lt;/li>
+&lt;li>强调了&lt;strong>测试驱动开发&lt;/strong>（TDD）在宏开发中的重要性。&lt;/li>
+&lt;li>介绍了&lt;strong>cargo expand&lt;/strong> 工具，用于查看宏展开后的代码。&lt;/li>
+&lt;li>讨论了不同类型的测试，如单元测试、集成测试、端到端测试和冒烟测试。&lt;/li>
+&lt;li>展示了如何使用 &lt;strong>trybuild&lt;/strong> 包进行测试。&lt;/li>
+&lt;li>总结了构建器模式，并强调了单元测试的重要性。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>第七章：错误处理&lt;/strong>
+&lt;ul>
+&lt;li>讨论了&lt;strong>异常&lt;/strong>的缺点，并介绍了函数式编程中&lt;strong>纯函数&lt;/strong>的概念。&lt;/li>
+&lt;li>讲解了使用 &lt;strong>&lt;code>Result&lt;/code>&lt;/strong> 枚举来处理错误。&lt;/li>
+&lt;li>强调了 &lt;code>panic!&lt;/code> 的使用场景，并说明了 &lt;code>unwrap&lt;/code> 和 &lt;code>expect&lt;/code> 方法在实验性代码中的作用。&lt;/li>
+&lt;li>演示了如何使用属性宏来修改函数，并将其中的 &lt;code>panic!&lt;/code> 转换为 &lt;code>Result&lt;/code>。&lt;/li>
+&lt;li>说明了如何使用 &lt;code>syn::Error&lt;/code> 来创建编译时错误。&lt;/li>
+&lt;li>介绍了 &lt;strong>&lt;code>abort&lt;/code>&lt;/strong> 和 &lt;strong>&lt;code>abort_call_site&lt;/code>&lt;/strong> 宏，用于生成详细的错误信息。&lt;/li>
+&lt;li>展示了如何使用 &lt;strong>&lt;code>proc_macro_error&lt;/code>&lt;/strong> crate 进行错误处理。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>第八章：宏的灵活性&lt;/strong>
+&lt;ul>
+&lt;li>讲解了如何使用&lt;strong>属性&lt;/strong>来扩展宏的功能。&lt;/li>
+&lt;li>介绍了如何使用 &lt;code>syn::meta&lt;/code> 来解析属性信息，包括 &lt;code>NamedValue&lt;/code>、&lt;code>Path&lt;/code> 和 &lt;code>List&lt;/code> 等类型。&lt;/li>
+&lt;li>讨论了 &lt;strong>&lt;code>lazy&lt;/code>&lt;/strong> 和 &lt;strong>&lt;code>eager&lt;/code>&lt;/strong> 求值的概念，并说明了如何使用 &lt;code>unwrap_or_else&lt;/code> 来进行延迟求值。&lt;/li>
+&lt;li>介绍了 &lt;strong>&lt;code>Default&lt;/code>&lt;/strong> trait，以及如何使用默认值作为宏的备选方案。&lt;/li>
+&lt;li>讨论了如何使用 &lt;strong>type state&lt;/strong> 模式来增强类型系统的表达能力，并避免不合法的状态。&lt;/li>
+&lt;li>展示了如何将构建器模式与类型状态模式相结合。&lt;/li>
+&lt;li>介绍了其他类型的属性，如外部属性、内部属性和文档注释。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>第九章：编写基础设施 DSL&lt;/strong>
+&lt;ul>
+&lt;li>介绍了 &lt;strong>IaC（基础设施即代码）&lt;/strong> 的概念，并说明了如何使用宏创建 DSL。&lt;/li>
+&lt;li>演示了如何使用函数式宏来解析 DSL 输入，并将其转换为 Rust 代码。&lt;/li>
+&lt;li>讲解了如何使用 &lt;code>syn&lt;/code> 库的 &lt;code>Parse&lt;/code> trait 来解析输入流。&lt;/li>
+&lt;li>说明了如何使用 &lt;strong>&lt;code>lookahead1&lt;/code>&lt;/strong> 来查看下一个 token 并返回错误。&lt;/li>
+&lt;li>介绍了两种其他的解析方法，并使用了 &lt;strong>&lt;code>Punctuated&lt;/code>&lt;/strong> 结构体和构建器模式。&lt;/li>
+&lt;li>展示了如何在宏中使用异步代码来创建 AWS 基础设施。&lt;/li>
+&lt;li>讨论了如何使用 &lt;strong>&lt;code>thiserror&lt;/code>&lt;/strong> crate 来简化错误处理。&lt;/li>
+&lt;li>强调了对宏进行端到端测试的重要性。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>第十章：宏与外部世界&lt;/strong>
+&lt;ul>
+&lt;li>讨论了如何在一个库中暴露多个宏。&lt;/li>
+&lt;li>介绍了如何使用 &lt;strong>feature flags&lt;/strong> 来添加或禁用宏的功能。&lt;/li>
+&lt;li>说明了如何使用属性来控制生成代码。&lt;/li>
+&lt;li>强调了为宏编写&lt;strong>文档&lt;/strong>的重要性，并介绍了如何使用 doctest。&lt;/li>
+&lt;li>讨论了如何发布宏库，以及开源的意义。&lt;/li>
+&lt;li>总结了本书的内容，并鼓励读者继续探索宏的世界。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>附录：练习解答&lt;/strong>
+&lt;ul>
+&lt;li>提供了所有章节的练习解答。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>重要概念总结&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>宏（Macros）：&lt;/strong> Rust 中进行元编程的主要工具，用于在编译时生成代码。&lt;/li>
+&lt;li>&lt;strong>声明宏（Declarative Macros）：&lt;/strong> 基于模式匹配和代码替换的宏，使用 &lt;code>macro_rules!&lt;/code> 定义。&lt;/li>
+&lt;li>&lt;strong>过程宏（Procedural Macros）：&lt;/strong> 使用 Rust 代码编写的宏，可以执行更复杂的代码生成逻辑。包括派生宏、属性宏和函数式宏。&lt;/li>
+&lt;li>&lt;strong>AST（抽象语法树）：&lt;/strong> 代码的结构化表示，用于过程宏进行代码分析和修改。&lt;/li>
+&lt;li>&lt;strong>&lt;code>quote!&lt;/code> 宏：&lt;/strong> 用于生成 Rust 代码的宏。&lt;/li>
+&lt;li>&lt;strong>&lt;code>syn&lt;/code> 库：&lt;/strong> 用于解析 Rust 代码的库。&lt;/li>
+&lt;li>&lt;strong>&lt;code>proc_macro&lt;/code> 和 &lt;code>proc_macro2&lt;/code>:&lt;/strong> 用于编写过程宏的库。&lt;/li>
+&lt;li>&lt;strong>DSL（领域特定语言）：&lt;/strong> 为特定领域设计的语言。&lt;/li>
+&lt;li>&lt;strong>类型状态模式 (Type State Pattern):&lt;/strong> 使用类型参数来编码系统的状态，避免不合法的状态转换。&lt;/li>
+&lt;li>&lt;strong>卫生性（Hygiene）：&lt;/strong> 宏中避免命名冲突的机制。&lt;/li>
+&lt;li>&lt;strong>Result:&lt;/strong> 用于处理可能失败的操作的枚举类型&lt;/li>
+&lt;li>&lt;strong>单元测试：&lt;/strong> 用于测试代码的最小单元的测试方法。&lt;/li>
+&lt;li>&lt;strong>白盒测试：&lt;/strong> 知道代码内部实现的测试方法&lt;/li>
+&lt;li>&lt;strong>黑盒测试：&lt;/strong> 不知道代码内部实现，只关注输入和输出的测试方法。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item><item><title>Learn Concurrent Programming With Go</title><link>https://book-excerpts.checkitout.dev/posts/learn-concurrent-programming-with-go/</link><pubDate>Wed, 01 Jan 2025 20:58:23 +0000</pubDate><guid>https://book-excerpts.checkitout.dev/posts/learn-concurrent-programming-with-go/</guid><description>&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>第一章：步入并发编程&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>并发（Concurrency）&lt;/strong> 是一种程序代码的属性，它将指令分组为独立的任务，并规划任务之间的边界和同步点。并发存在于我们日常生活和工作中，例如多人同时在线购物或汽车行驶。&lt;/li>
+&lt;li>&lt;strong>并行（Parallelism）&lt;/strong> 是程序执行的属性，它指同时执行多个任务。并行是并发的子集，只有并发程序才能并行执行。&lt;/li>
+&lt;li>&lt;strong>Go 语言&lt;/strong> 在设计时就考虑了高性能的并发，因此是学习并发编程的理想选择。Go 使用 &lt;strong>goroutine&lt;/strong> 作为基本的并发执行单元，它是一种轻量级的用户级线程，由 Go 的运行时管理。&lt;/li>
+&lt;li>Go 提供了两种并发模型：&lt;strong>通信顺序进程（CSP）&lt;/strong> 模型和传统的 &lt;strong>内存共享&lt;/strong> 模型。CSP 模型通过消息传递进行通信，而内存共享模型使用互斥锁和条件变量等原语进行同步。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>第二章：处理线程&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>操作系统&lt;/strong> 将作业的状态分为多个阶段，包括等待执行、正在执行、等待 I/O 等。&lt;/li>
+&lt;li>&lt;strong>绿色线程&lt;/strong> （green threads） 是用户级线程的一种实现，但 Go 的 goroutine 可以充分利用多核 CPU。&lt;/li>
+&lt;li>&lt;strong>并发&lt;/strong> 是关于如何同时做多件事的计划，而 &lt;strong>并行&lt;/strong> 是关于同时执行多件事。&lt;/li>
+&lt;li>即使只有一个处理器，通过频繁的 &lt;strong>上下文切换&lt;/strong> ，也可以实现伪并行执行。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>第三章：使用内存共享进行线程通信&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>竞态条件&lt;/strong> （race condition） 指多个 goroutine 并发访问共享资源时，由于执行顺序不确定而导致结果错误。&lt;/li>
+&lt;li>&lt;strong>原子操作&lt;/strong> （atomic operation） 是不可中断的操作，可以避免竞态条件。&lt;/li>
+&lt;li>为了避免竞态条件，需要进行 &lt;strong>同步&lt;/strong> 和 &lt;strong>通信&lt;/strong> 。Go 提供了多种同步工具，例如互斥锁（mutex）和条件变量。&lt;/li>
+&lt;li>Go 的竞态检测器可以帮助我们找到代码中的竞态条件。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>第四章：使用互斥锁进行同步&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>互斥锁（Mutex）&lt;/strong> 是一种并发控制机制，它只允许一个执行单元（例如 goroutine）进入 &lt;strong>临界区&lt;/strong>。&lt;/li>
+&lt;li>Go 的 &lt;code>sync&lt;/code> 包提供了 &lt;code>Mutex&lt;/code> 类型，它提供了 &lt;code>Lock()&lt;/code> 和 &lt;code>Unlock()&lt;/code> 操作来保护临界区。&lt;/li>
+&lt;li>当多个 goroutine 同时尝试锁定互斥锁时，只有一个 goroutine 会成功获得锁，其他 goroutine 将被挂起，直到锁被释放。&lt;/li>
+&lt;li>&lt;code>TryLock()&lt;/code> 操作尝试获取锁，如果锁不可用，则立即返回 &lt;code>false&lt;/code> ，而不会阻塞。&lt;/li>
+&lt;li>&lt;strong>读写锁（RWMutex）&lt;/strong> 允许多个 goroutine 同时读取共享资源，但只允许一个 goroutine 写入共享资源。&lt;/li>
+&lt;li>&lt;strong>读优先&lt;/strong> 的读写锁可能会导致 &lt;strong>写饥饿&lt;/strong> ，即写 goroutine 无法获得锁。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>第五章：条件变量和信号量&lt;/strong>&lt;/p></description></item><item><title>Code Like a Pro in Rust</title><link>https://book-excerpts.checkitout.dev/posts/code-like-a-pro-in-rust/</link><pubDate>Wed, 01 Jan 2025 19:43:05 +0000</pubDate><guid>https://book-excerpts.checkitout.dev/posts/code-like-a-pro-in-rust/</guid><description>&lt;p>&lt;strong>假装一个Rust专家&lt;/strong>&lt;/p>
+&lt;p>本书对 Rust 初学者合适，没有介绍高深的Rust概念。&lt;/p>
+&lt;p>好的，这是一份按照章节对《Code Like a Pro in Rust》这本书的总结和摘要，着重于关键概念和信息，以中文呈现：&lt;/p>
+&lt;p>&lt;strong>前言&lt;/strong>&lt;/p>
+&lt;p>作者Brenden Matthews热爱学习新的编程语言，并指出Rust在很多方面都是一门独特的语言，引入了一些即使有多年编程经验的人也可能从未见过的概念。本书旨在帮助读者克服学习Rust的障碍，并成为一名更专业的Rust程序员。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>第一章：感受 Rust&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>Rust 是什么？&lt;/strong> Rust 是一种现代编程语言，专注于性能和安全。它拥有现代编程语言的特性，如闭包、泛型、异步 I/O、强大的工具、IDE 集成、代码检查器和风格检查工具。Rust 拥有一个充满活力且不断增长的开发者社区。Rust 主要用于构建系统级代码和安全及性能至关重要的库。它也可以用于其他领域，如使用 WebAssembly（Wasm）进行 Web 编程。&lt;/li>
+&lt;li>&lt;strong>Rust 的独特之处？&lt;/strong> Rust 通过一套独特的抽象来解决常见的编程错误。&lt;strong>安全性&lt;/strong>是 Rust 的标志，它通过&lt;strong>借用检查器&lt;/strong>提供强大的安全保证。Rust 的借用检查器在编译时验证引用，而不是在运行时进行垃圾回收。Rust 保证内存安全，不允许同时存在多个可变引用。Rust 的编译器 rustc 会检查对于任何给定的对象或变量，在同一时间只能有一个可变引用。可以有多个不可变引用，但不能有多个可变引用。Rust 还具有现代性、开源等特性。&lt;/li>
+&lt;li>&lt;strong>何时使用 Rust？&lt;/strong> Rust 适用于多种应用场景，包括 Web 开发。&lt;/li>
+&lt;li>&lt;strong>需要的工具&lt;/strong>：本书的代码示例可在互联网上公开获取。您需要安装 Git、rustup、gcc 或 clang。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>第二章：使用 Cargo 进行项目管理&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>Cargo 简介&lt;/strong>：Cargo 是 Rust 的构建系统和包管理器。&lt;/li>
+&lt;li>&lt;strong>基本用法&lt;/strong>：使用 &lt;code>cargo new&lt;/code> 创建新应用程序或库。Cargo 会自动初始化一个新的 Git 仓库。&lt;/li>
+&lt;li>&lt;strong>构建、运行和测试&lt;/strong>： &lt;code>cargo build&lt;/code>、 &lt;code>cargo run&lt;/code>、 &lt;code>cargo check&lt;/code> 和 &lt;code>cargo test&lt;/code> 是常用的命令。&lt;/li>
+&lt;li>&lt;strong>依赖管理&lt;/strong>：Cargo.toml 文件用于配置项目依赖项。可以使用语义化版本控制（SemVer）指定依赖项版本。&lt;/li>
+&lt;li>&lt;strong>Feature flags&lt;/strong>： 可以使用 feature flags 来表达可选的功能, 并通过 &lt;code>cfg&lt;/code> 和 &lt;code>cfg_attr&lt;/code> 属性来控制编译。&lt;/li>
+&lt;li>&lt;strong>发布包&lt;/strong>： 使用 &lt;code>cargo publish&lt;/code> 发布到 crates.io。&lt;/li>
+&lt;li>&lt;strong>文档化&lt;/strong>：使用 &lt;code>cargo doc&lt;/code> 生成项目文档，文档格式使用 CommonMark。&lt;/li>
+&lt;li>&lt;strong>工作区（Workspaces）&lt;/strong>： 用于管理多个相关的包。&lt;/li>
+&lt;li>&lt;strong>嵌入式环境中的 Rust 项目&lt;/strong>： Rust 适用于嵌入式编程，可以使用 QEMU 进行 Cortex-M 设备仿真。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>第三章：Rust 工具&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>Rust 工具概述&lt;/strong>：Rust 提供了多种工具来提高代码质量和生产力。&lt;/li>
+&lt;li>&lt;strong>rust-analyzer&lt;/strong>：用于 Rust IDE 集成的工具，提供代码补全等功能。&lt;/li>
+&lt;li>&lt;strong>rustfmt&lt;/strong>：用于代码格式化的工具，保持代码整洁。&lt;/li>
+&lt;li>&lt;strong>Clippy&lt;/strong>：用于提高代码质量的工具，提供超过 450 种代码质量检查 (lints)。可以配置 Clippy 的 lint 并自动应用建议。&lt;/li>
+&lt;li>&lt;strong>sccache&lt;/strong>：用于减少编译时间的编译器缓存。&lt;/li>
+&lt;li>&lt;strong>与 IDE 集成&lt;/strong>： Rust 可以与各种 IDE 集成，包括 Visual Studio Code。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>第四章：核心数据&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>数据结构&lt;/strong>：本章介绍了 Rust 的基本数据结构。&lt;/li>
+&lt;li>&lt;strong>字符串&lt;/strong>：Rust 中有 &lt;code>str&lt;/code>、 &lt;code>String&lt;/code> 和 &lt;code>&amp;amp;str&lt;/code> 三种字符串类型。 &lt;code>str&lt;/code> 是栈分配的 UTF-8 字符串切片，不可变； &lt;code>String&lt;/code> 是堆分配的 UTF-8 字符串，可变； &lt;code>&amp;amp;str&lt;/code> 是对 &lt;code>str&lt;/code> 或 &lt;code>String&lt;/code> 的不可变引用。&lt;/li>
+&lt;li>&lt;strong>切片和数组&lt;/strong>： 数组是固定长度的值序列，切片是指向内存连续区域的指针，包含长度。&lt;/li>
+&lt;li>&lt;strong>向量（Vectors）&lt;/strong>： &lt;code>Vec&lt;/code> 是可调整大小的通用容器，用于存储任何类型的值序列。&lt;/li>
+&lt;li>&lt;strong>哈希映射 (HashMap)&lt;/strong>：HashMap 用于存储键值对。&lt;/li>
+&lt;li>&lt;strong>基本类型&lt;/strong>： Rust 的基本类型包括整数、大小类型和浮点类型。&lt;/li>
+&lt;li>&lt;strong>原始类型的算术运算&lt;/strong>： Rust 默认情况下会检查算术运算的溢出。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>第五章：内存管理&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>堆和栈&lt;/strong>：Rust 中的内存管理涉及堆和栈。堆用于动态分配内存，栈用于静态分配。&lt;/li>
+&lt;li>&lt;strong>所有权&lt;/strong>：Rust 的所有权系统通过复制、借用、引用和移动来管理内存。&lt;/li>
+&lt;li>&lt;strong>深拷贝&lt;/strong>： 当需要复制数据时，需要考虑深拷贝。&lt;/li>
+&lt;li>&lt;strong>避免复制&lt;/strong>： 通过借用和引用可以避免不必要的复制。&lt;/li>
+&lt;li>&lt;strong>智能指针&lt;/strong>：智能指针，如 &lt;code>Box&lt;/code>，用于在堆上分配数据。&lt;/li>
+&lt;li>&lt;strong>引用计数&lt;/strong>： &lt;code>Rc&lt;/code> 和 &lt;code>Arc&lt;/code> 是引用计数的智能指针，用于实现共享所有权。&lt;/li>
+&lt;li>&lt;strong>写时复制&lt;/strong>：写时复制是一种设计模式，在需要更改数据时会将其复制到新位置。&lt;code>Cow&lt;/code> 是一个智能指针，用于实现写时复制。&lt;/li>
+&lt;li>&lt;strong>自定义分配器&lt;/strong>： 可以自定义内存分配器，以实现更精细的内存控制。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>第六章：单元测试&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>单元测试&lt;/strong>：使用 &lt;code>#[test]&lt;/code> 属性标记测试函数。&lt;/li>
+&lt;li>&lt;strong>属性测试&lt;/strong>：使用 &lt;code>proptest&lt;/code> 库进行属性测试。&lt;/li>
+&lt;li>&lt;strong>代码覆盖率&lt;/strong>： 使用 Tarpaulin 工具生成代码覆盖率报告。&lt;/li>
+&lt;li>&lt;strong>处理不断变化的生态系统&lt;/strong>：Rust 的生态系统不断改进和更新，需要注意向后和向前兼容性。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>第七章：集成测试&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>集成测试&lt;/strong>：集成测试用于测试多个组件之间的交互。&lt;/li>
+&lt;li>&lt;strong>集成测试策略&lt;/strong>：测试策略包括使用内置测试或外部集成测试，可以使用 &lt;code>assert_cmd&lt;/code> 测试 CLI 应用程序。&lt;/li>
+&lt;li>&lt;strong>模糊测试&lt;/strong>：模糊测试使用随机生成的数据来测试代码。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>第八章：异步 Rust&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>异步 Rust&lt;/strong>： 异步 Rust 可以通过使用 &lt;code>async/await&lt;/code> 关键字实现并发。&lt;/li>
+&lt;li>&lt;strong>运行时&lt;/strong>： &lt;code>Tokio&lt;/code>、 &lt;code>async-std&lt;/code> 和 &lt;code>Smol&lt;/code> 是常用的异步运行时。&lt;/li>
+&lt;li>&lt;strong>异步思维&lt;/strong>：异步 I/O 是非阻塞的，而同步 I/O 是阻塞的。&lt;/li>
+&lt;li>&lt;strong>Futures&lt;/strong>：Futures 用于处理异步任务的结果。&lt;/li>
+&lt;li>&lt;strong>&lt;code>#[tokio::main]&lt;/code>&lt;/strong>： &lt;code>#[tokio::main]&lt;/code> 宏用于定义运行时。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>第九章：构建 HTTP REST API 服务&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>选择 Web 框架&lt;/strong>： &lt;code>axum&lt;/code> 是一个用于构建 Web API 的框架 。&lt;/li>
+&lt;li>&lt;strong>创建架构&lt;/strong>： Web 服务通常包括负载均衡器、Web 服务和状态服务（如数据库）。&lt;/li>
+&lt;li>&lt;strong>API 设计&lt;/strong>： API 路由定义了端点和请求方法。&lt;/li>
+&lt;li>&lt;strong>库和工具&lt;/strong>： 使用 &lt;code>axum&lt;/code>、 &lt;code>chrono&lt;/code>、 &lt;code>serde&lt;/code>、 &lt;code>sqlx&lt;/code> 和 &lt;code>tokio&lt;/code> 等库。&lt;/li>
+&lt;li>&lt;strong>应用脚手架&lt;/strong>：包括初始化追踪和日志、数据库连接以及定义路由。&lt;/li>
+&lt;li>&lt;strong>数据建模&lt;/strong>： 使用 SQL 模式和 Rust 结构体来表示数据。&lt;/li>
+&lt;li>&lt;strong>实现 API 路由&lt;/strong>：使用 axum 的 Router 定义 API 路由，并使用 extractors 处理请求。&lt;/li>
+&lt;li>&lt;strong>错误处理&lt;/strong>： 使用 &lt;code>Error&lt;/code> 枚举定义错误类型。&lt;/li>
+&lt;li>&lt;strong>运行服务&lt;/strong>：可以使用 &lt;code>HTTPie&lt;/code> 测试 API 服务。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>第十章：构建 HTTP REST API 客户端&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>选择工具和库&lt;/strong>： 使用 &lt;code>Tokio&lt;/code> 和 &lt;code>hyper&lt;/code> 库进行 HTTP 请求， &lt;code>clap&lt;/code> 库用于命令行解析。&lt;/li>
+&lt;li>&lt;strong>设计 CLI&lt;/strong>：CLI 设计包括定义命令和参数。&lt;/li>
+&lt;li>&lt;strong>声明命令&lt;/strong>：使用 &lt;code>clap&lt;/code> 的宏定义命令。&lt;/li>
+&lt;li>&lt;strong>实现请求&lt;/strong>：使用 &lt;code>hyper&lt;/code> 发送 HTTP 请求。&lt;/li>
+&lt;li>&lt;strong>优雅地处理错误&lt;/strong>： 在 &lt;code>main&lt;/code> 函数中使用 &lt;code>?&lt;/code> 操作符来处理错误。&lt;/li>
+&lt;li>&lt;strong>测试 CLI&lt;/strong>： 可以使用 API 服务测试 CLI 的功能。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>第十一章：优化&lt;/strong>
+&lt;ul>
+&lt;li>&lt;strong>优化策略&lt;/strong>： Rust 的零成本抽象允许编写快速代码。&lt;/li>
+&lt;li>&lt;strong>使用 Rust 加速其他语言&lt;/strong>： 可以使用 Rust 加速其他语言的代码，例如 Python、Ruby、Elixir、JavaScript 和 Java。&lt;/li>
+&lt;li>&lt;strong>需要注意的点&lt;/strong>：向量应预先分配所需的容量。使用 &lt;code>copy_from_slice()&lt;/code> 方法在切片之间快速移动数据。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>附录&lt;/strong>
+&lt;ul>
+&lt;li>介绍了如何使用 &lt;code>rustup&lt;/code> 管理 Rust 工具链。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item></channel></rss>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Parallelism on 帛书文摘</title><link>https://book-excerpts.checkitout.dev/tags/parallelism/</link><description>Recent content in Parallelism on 帛书文摘</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 01 Jan 2025 20:58:23 +0000</lastBuildDate><atom:link href="https://book-excerpts.checkitout.dev/tags/parallelism/index.xml" rel="self" type="application/rss+xml"/><item><title>Learn Concurrent Programming With Go</title><link>https://book-excerpts.checkitout.dev/posts/learn-concurrent-programming-with-go/</link><pubDate>Wed, 01 Jan 2025 20:58:23 +0000</pubDate><guid>https://book-excerpts.checkitout.dev/posts/learn-concurrent-programming-with-go/</guid><description>&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>第一章：步入并发编程&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>并发（Concurrency）&lt;/strong> 是一种程序代码的属性，它将指令分组为独立的任务，并规划任务之间的边界和同步点。并发存在于我们日常生活和工作中，例如多人同时在线购物或汽车行驶。&lt;/li>
+&lt;li>&lt;strong>并行（Parallelism）&lt;/strong> 是程序执行的属性，它指同时执行多个任务。并行是并发的子集，只有并发程序才能并行执行。&lt;/li>
+&lt;li>&lt;strong>Go 语言&lt;/strong> 在设计时就考虑了高性能的并发，因此是学习并发编程的理想选择。Go 使用 &lt;strong>goroutine&lt;/strong> 作为基本的并发执行单元，它是一种轻量级的用户级线程，由 Go 的运行时管理。&lt;/li>
+&lt;li>Go 提供了两种并发模型：&lt;strong>通信顺序进程（CSP）&lt;/strong> 模型和传统的 &lt;strong>内存共享&lt;/strong> 模型。CSP 模型通过消息传递进行通信，而内存共享模型使用互斥锁和条件变量等原语进行同步。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>第二章：处理线程&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>操作系统&lt;/strong> 将作业的状态分为多个阶段，包括等待执行、正在执行、等待 I/O 等。&lt;/li>
+&lt;li>&lt;strong>绿色线程&lt;/strong> （green threads） 是用户级线程的一种实现，但 Go 的 goroutine 可以充分利用多核 CPU。&lt;/li>
+&lt;li>&lt;strong>并发&lt;/strong> 是关于如何同时做多件事的计划，而 &lt;strong>并行&lt;/strong> 是关于同时执行多件事。&lt;/li>
+&lt;li>即使只有一个处理器，通过频繁的 &lt;strong>上下文切换&lt;/strong> ，也可以实现伪并行执行。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>第三章：使用内存共享进行线程通信&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>竞态条件&lt;/strong> （race condition） 指多个 goroutine 并发访问共享资源时，由于执行顺序不确定而导致结果错误。&lt;/li>
+&lt;li>&lt;strong>原子操作&lt;/strong> （atomic operation） 是不可中断的操作，可以避免竞态条件。&lt;/li>
+&lt;li>为了避免竞态条件，需要进行 &lt;strong>同步&lt;/strong> 和 &lt;strong>通信&lt;/strong> 。Go 提供了多种同步工具，例如互斥锁（mutex）和条件变量。&lt;/li>
+&lt;li>Go 的竞态检测器可以帮助我们找到代码中的竞态条件。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>第四章：使用互斥锁进行同步&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>互斥锁（Mutex）&lt;/strong> 是一种并发控制机制，它只允许一个执行单元（例如 goroutine）进入 &lt;strong>临界区&lt;/strong>。&lt;/li>
+&lt;li>Go 的 &lt;code>sync&lt;/code> 包提供了 &lt;code>Mutex&lt;/code> 类型，它提供了 &lt;code>Lock()&lt;/code> 和 &lt;code>Unlock()&lt;/code> 操作来保护临界区。&lt;/li>
+&lt;li>当多个 goroutine 同时尝试锁定互斥锁时，只有一个 goroutine 会成功获得锁，其他 goroutine 将被挂起，直到锁被释放。&lt;/li>
+&lt;li>&lt;code>TryLock()&lt;/code> 操作尝试获取锁，如果锁不可用，则立即返回 &lt;code>false&lt;/code> ，而不会阻塞。&lt;/li>
+&lt;li>&lt;strong>读写锁（RWMutex）&lt;/strong> 允许多个 goroutine 同时读取共享资源，但只允许一个 goroutine 写入共享资源。&lt;/li>
+&lt;li>&lt;strong>读优先&lt;/strong> 的读写锁可能会导致 &lt;strong>写饥饿&lt;/strong> ，即写 goroutine 无法获得锁。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>第五章：条件变量和信号量&lt;/strong>&lt;/p></description></item></channel></rss>
