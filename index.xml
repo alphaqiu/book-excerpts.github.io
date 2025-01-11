@@ -1,4 +1,87 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>帛书文摘</title><link>https://book-excerpts.checkitout.dev/</link><description>Recent content on 帛书文摘</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 10 Jan 2025 21:47:49 +0000</lastBuildDate><atom:link href="https://book-excerpts.checkitout.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>Artificial Intelligence in Finance: A Python-Based Guide</title><link>https://book-excerpts.checkitout.dev/posts/artificial-intelligence-in-finance-a-python-based-guide/</link><pubDate>Fri, 10 Jan 2025 21:47:49 +0000</pubDate><guid>https://book-excerpts.checkitout.dev/posts/artificial-intelligence-in-finance-a-python-based-guide/</guid><description>&lt;h3 id="整体摘要">整体摘要&lt;/h3>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>帛书文摘</title><link>https://book-excerpts.checkitout.dev/</link><description>Recent content on 帛书文摘</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 11 Jan 2025 19:25:00 +0800</lastBuildDate><atom:link href="https://book-excerpts.checkitout.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>PDF Explained</title><link>https://book-excerpts.checkitout.dev/posts/pdf_explained/</link><pubDate>Sat, 11 Jan 2025 19:25:00 +0800</pubDate><guid>https://book-excerpts.checkitout.dev/posts/pdf_explained/</guid><description>&lt;h3 id="整体摘要">整体摘要&lt;/h3>
+&lt;p>《PDF Explained》由John Whitington撰写，是理解PDF（Portable Document Format）格式的一本权威指南。本书旨在以易于理解的方式介绍PDF，不仅适合技术背景的专业人士，也适合那些仅想了解PDF基础以更好地使用相关工具的用户。PDF作为全球领先的页面描述语言，不仅适用于打印，也适用于在线使用，广泛应用于印刷业、电子出版、PDF表单、文档归档等多个领域。&lt;/p>
+&lt;p>本书首先回顾了PDF的历史背景，解释了PDF如何发展成为一种跨平台的文档交换格式。随后，详细介绍了PDF文件的结构、语法以及构建简单PDF文件的过程。书中还深入探讨了PDF的图形、文本和字体处理、文档元数据和导航、加密文档的处理方法，以及如何使用pdftk等命令行工具处理PDF文件。最后，总结了用于查看、转换、编辑和编程PDF文件的软件工具和文档资源。&lt;/p>
+&lt;p>全书通过丰富的示例和详细的解释，帮助读者掌握PDF的核心概念和技术细节。无论是对于希望深入了解PDF内部工作机制的开发者，还是对于需要高效处理PDF文档的普通用户，本书都提供了宝贵的参考和指导。&lt;/p>
+&lt;h3 id="章节要点和摘要">章节要点和摘要&lt;/h3>
+&lt;h4 id="第一章引言">第一章：引言&lt;/h4>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>PDF历史&lt;/strong>：介绍了PDF的起源和发展历程，从PostScript到PDF 1.0的发布，以及PDF如何在印刷业和电子出版领域逐渐占据主导地位。&lt;/li>
+&lt;li>&lt;strong>PDF优势&lt;/strong>：阐述了PDF相比其他格式的优势，如随机访问、流创建和增量更新、嵌入字体、可搜索文本等。&lt;/li>
+&lt;li>&lt;strong>PDF标准化&lt;/strong>：讨论了PDF作为ISO标准（ISO 32000-1:2008）的重要性，以及这对PDF进一步推广的影响。&lt;/li>
+&lt;li>&lt;strong>PDF应用&lt;/strong>：概述了PDF在印刷业、电子书和出版、PDF表单、文档归档等多个领域的应用。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章通过回顾PDF的历史和发展，展示了PDF作为一种跨平台文档交换格式的独特优势。作为ISO标准，PDF的广泛应用和不断发展的技术特性使其成为文档处理领域的重要工具。&lt;/p>
+&lt;h4 id="第二章构建一个简单的pdf">第二章：构建一个简单的PDF&lt;/h4>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>PDF基本语法&lt;/strong>：介绍了PDF文件的基本结构，包括文档内容、页面内容和文件结构。&lt;/li>
+&lt;li>&lt;strong>构建PDF元素&lt;/strong>：通过示例展示了如何逐步构建一个简单的PDF文件，包括文件头、主要对象、图形内容、目录、交叉引用表和尾部。&lt;/li>
+&lt;li>&lt;strong>使用pdftk&lt;/strong>：介绍了pdftk工具，并展示了如何使用它修复和验证手动构建的PDF文件。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章通过详细的步骤和示例，引导读者手动构建一个简单的PDF文件，并介绍了使用pdftk工具来修复和验证PDF文件的方法。这一过程帮助读者深入理解PDF文件的内部结构和语法。&lt;/p>
+&lt;h4 id="第三章文件结构">第三章：文件结构&lt;/h4>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>文件布局&lt;/strong>：详细描述了PDF文件的四个主要部分：文件头、文件体、交叉引用表和尾部。&lt;/li>
+&lt;li>&lt;strong>对象语法&lt;/strong>：介绍了PDF中的五种基本对象类型（整数和实数、字符串、名称、布尔值和空对象）和三种复合对象类型（数组、字典和流）。&lt;/li>
+&lt;li>&lt;strong>间接引用&lt;/strong>：解释了如何通过间接引用来连接PDF中的对象，形成对象图。&lt;/li>
+&lt;li>&lt;strong>流和过滤器&lt;/strong>：讨论了如何使用流来存储二进制数据，以及如何使用过滤器来压缩流数据。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章深入探讨了PDF文件的内部结构和语法，包括文件布局、对象类型、间接引用和流过滤器等关键概念。这些内容为理解PDF文件的读取和写入过程奠定了基础。&lt;/p>
+&lt;h4 id="第四章文档结构">第四章：文档结构&lt;/h4>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>尾部字典&lt;/strong>：介绍了尾部字典中的关键条目，如/Size、/Root、/Info和/ID等。&lt;/li>
+&lt;li>&lt;strong>文档信息字典&lt;/strong>：详细描述了文档信息字典中的条目，如/Title、/Author、/Subject等，并提供了示例。&lt;/li>
+&lt;li>&lt;strong>文档目录&lt;/strong>：解释了文档目录作为对象图的根对象的重要性，以及它如何连接页面树和其他对象。&lt;/li>
+&lt;li>&lt;strong>页面树&lt;/strong>：讨论了页面树的结构和作用，以及如何使用它来快速定位文档中的页面。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章通过介绍PDF文档的逻辑结构，包括尾部字典、文档信息字典、文档目录和页面树等关键组件，帮助读者理解PDF文档的内部组织和结构。这些内容为处理和管理PDF文档提供了重要的基础知识。&lt;/p>
+&lt;h4 id="第五章图形">第五章：图形&lt;/h4>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>内容流&lt;/strong>：解释了内容流如何定义页面上的图形元素，包括线条、曲线、形状和文本等。&lt;/li>
+&lt;li>&lt;strong>图形状态&lt;/strong>：讨论了图形状态参数和操作符如何影响后续的图形绘制操作。&lt;/li>
+&lt;li>&lt;strong>路径构造和绘制&lt;/strong>：介绍了如何使用路径构造操作符来定义图形形状，并使用路径绘制操作符来填充或描边这些形状。&lt;/li>
+&lt;li>&lt;strong>颜色空间和颜色&lt;/strong>：详细描述了PDF中使用的颜色空间类型（如DeviceGray、DeviceRGB和DeviceCMYK）以及如何设置和更改颜色。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章通过介绍PDF中的图形处理技术和方法，包括内容流、图形状态、路径构造和绘制以及颜色空间和颜色等关键概念，帮助读者掌握如何在PDF文档中创建和呈现复杂的图形元素。&lt;/p>
+&lt;h4 id="第六章文本和字体">第六章：文本和字体&lt;/h4>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>文本状态&lt;/strong>：介绍了文本状态参数和操作符如何控制文本的显示方式和位置。&lt;/li>
+&lt;li>&lt;strong>文本显示&lt;/strong>：讨论了如何使用文本显示操作符来在页面上显示文本字符串。&lt;/li>
+&lt;li>&lt;strong>字体类型和编码&lt;/strong>：详细描述了PDF中支持的字体类型（如Type 1、TrueType和CID字体）以及如何定义和使用字体编码。&lt;/li>
+&lt;li>&lt;strong>字体嵌入&lt;/strong>：解释了如何将字体嵌入到PDF文档中，以确保文本的正确显示和打印。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章通过介绍PDF中的文本处理技术和方法，包括文本状态、文本显示、字体类型和编码以及字体嵌入等关键概念，帮助读者掌握如何在PDF文档中处理和显示文本内容。这些内容为创建和编辑包含大量文本的PDF文档提供了重要的指导。&lt;/p>
+&lt;h4 id="第七章文档元数据和导航">第七章：文档元数据和导航&lt;/h4>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>目的地&lt;/strong>：介绍了目的地如何定义PDF文档中的位置，并用于书签和超链接等导航元素。&lt;/li>
+&lt;li>&lt;strong>文档大纲（书签）&lt;/strong>：讨论了文档大纲的结构和作用，以及如何使用它来快速浏览和定位文档内容。&lt;/li>
+&lt;li>&lt;strong>XML元数据&lt;/strong>：详细描述了如何在PDF文档中嵌入XML元数据，以提供更丰富的文档信息。&lt;/li>
+&lt;li>&lt;strong>注释和超链接&lt;/strong>：介绍了注释和超链接等交互元素在PDF文档中的应用和实现方法。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章通过介绍PDF文档中的元数据和导航元素，包括目的地、文档大纲、XML元数据、注释和超链接等关键概念，帮助读者理解如何为PDF文档提供丰富的元信息和交互功能。这些内容为创建更易于使用和管理的PDF文档提供了重要的支持。&lt;/p>
+&lt;h4 id="第八章加密文档">第八章：加密文档&lt;/h4>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>加密字典&lt;/strong>：介绍了加密字典中的关键条目和加密算法类型（如40位RC4、128位RC4和128位AES等）。&lt;/li>
+&lt;li>&lt;strong>加密和解密过程&lt;/strong>：详细描述了如何加密和解密PDF文档中的流和字符串对象。&lt;/li>
+&lt;li>&lt;strong>权限控制&lt;/strong>：讨论了如何设置和使用权限来控制对PDF文档的访问和操作。&lt;/li>
+&lt;li>&lt;strong>使用pdftk加密和解密&lt;/strong>：介绍了如何使用pdftk工具来加密和解密PDF文档，并设置权限。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章通过介绍PDF文档的加密技术和方法，包括加密字典、加密算法类型、加密和解密过程以及权限控制等关键概念，帮助读者保护PDF文档的安全性和隐私性。同时，本章还展示了如何使用pdftk工具来方便地实现PDF文档的加密和解密操作。&lt;/p></description></item><item><title>Artificial Intelligence in Finance: A Python-Based Guide</title><link>https://book-excerpts.checkitout.dev/posts/artificial-intelligence-in-finance-a-python-based-guide/</link><pubDate>Fri, 10 Jan 2025 21:47:49 +0000</pubDate><guid>https://book-excerpts.checkitout.dev/posts/artificial-intelligence-in-finance-a-python-based-guide/</guid><description>&lt;h3 id="整体摘要">整体摘要&lt;/h3>
 &lt;p>《Artificial Intelligence in Finance: A Python-Based Guide》由Yves Hilpisch撰写，是一本深入探讨人工智能（AI）在金融领域应用的指南。随着技术的飞速发展和大数据的普及，AI正逐渐改变金融行业的面貌。本书通过Python这一强大的编程语言，带领读者探索AI在金融领域的最新进展和实践应用。&lt;/p>
 &lt;p>&lt;strong>主要观点&lt;/strong>：&lt;/p>
 &lt;ul>
