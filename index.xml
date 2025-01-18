@@ -1,4 +1,94 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>帛书文摘</title><link>https://book-excerpts.checkitout.dev/</link><description>Recent content on 帛书文摘</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 12 Jan 2025 22:49:56 +0800</lastBuildDate><atom:link href="https://book-excerpts.checkitout.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>Defending APIs</title><link>https://book-excerpts.checkitout.dev/posts/defending_apis/</link><pubDate>Sun, 12 Jan 2025 22:49:56 +0800</pubDate><guid>https://book-excerpts.checkitout.dev/posts/defending_apis/</guid><description>&lt;h1 id="defending-apis摘要">《Defending APIs》摘要&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>帛书文摘</title><link>https://book-excerpts.checkitout.dev/</link><description>Recent content on 帛书文摘</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 18 Jan 2025 20:17:28 +0800</lastBuildDate><atom:link href="https://book-excerpts.checkitout.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>PyTorch实用教程（第二版）</title><link>https://book-excerpts.checkitout.dev/posts/pytorch/</link><pubDate>Sat, 18 Jan 2025 20:17:28 +0800</pubDate><guid>https://book-excerpts.checkitout.dev/posts/pytorch/</guid><description>&lt;h1 id="整体摘要">整体摘要&lt;/h1>
+&lt;p>本书详细阐述了PyTorch框架的各个方面，从基础安装到高级应用，再到工业落地，提供了全面的指导。书中通过丰富的案例和详细的代码讲解，帮助读者深入理解PyTorch的工作原理，并掌握其在计算机视觉、自然语言处理等领域的应用。同时，本书还深入探讨了模型部署和优化的关键环节，为读者提供了从研究到生产的完整解决方案。&lt;/p>
+&lt;p>本书分为三篇：PyTorch基础、项目应用和工业落地。在PyTorch基础篇中，详细介绍了PyTorch的环境配置、核心模块、数据模块、模型模块、优化模块和可视化模块。在项目应用篇中，通过八个计算机视觉实战项目和五个自然语言处理应用，展示了PyTorch在实际问题中的应用。在工业落地篇中，讲解了ONNX与TensorRT的应用，以及模型部署的关键环节。&lt;/p>
+&lt;h1 id="章节要点和摘要">章节要点和摘要&lt;/h1>
+&lt;h2 id="一pytorch基础篇">一、PyTorch基础篇&lt;/h2>
+&lt;h3 id="1-pytorch简介与安装">1. PyTorch简介与安装&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>主要观点&lt;/strong>：介绍了PyTorch的发展历程、必备网站和安装方法。&lt;/li>
+&lt;li>&lt;strong>论据和论证方法&lt;/strong>：通过历史数据和官方网站的介绍，论证了PyTorch在深度学习领域的领先地位。详细讲解了使用Anaconda、Pycharm、VS Code等工具进行环境配置的方法，以及CUDA和cuDNN的安装步骤。&lt;/li>
+&lt;li>&lt;strong>案例与细节&lt;/strong>：提供了具体的安装命令和配置步骤，帮助读者快速搭建PyTorch开发环境。&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-pytorch核心模块">2. PyTorch核心模块&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>主要观点&lt;/strong>：深入讲解了PyTorch的核心模块，包括Tensor、自动求导、计算图等。&lt;/li>
+&lt;li>&lt;strong>论据和论证方法&lt;/strong>：通过代码示例和理论解释，详细阐述了Tensor的数据结构和操作，以及自动求导机制的工作原理。介绍了计算图的概念，并通过实例展示了如何构建和计算计算图。&lt;/li>
+&lt;li>&lt;strong>案例与细节&lt;/strong>：以新冠肺炎X光分类为例，展示了如何使用PyTorch构建和训练深度学习模型。&lt;/li>
+&lt;/ul>
+&lt;h3 id="3-pytorch数据模块">3. PyTorch数据模块&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>主要观点&lt;/strong>：介绍了PyTorch的数据处理模块，包括Dataset、DataLoader和transforms等。&lt;/li>
+&lt;li>&lt;strong>论据和论证方法&lt;/strong>：通过代码示例，详细讲解了如何使用这些模块进行数据的加载、预处理和增强。&lt;/li>
+&lt;li>&lt;strong>案例与细节&lt;/strong>：提供了多个数据集的处理示例，包括CIFAR-10、ImageNet等，并展示了如何使用transforms进行图像增强。&lt;/li>
+&lt;/ul>
+&lt;h3 id="4-pytorch模型模块">4. PyTorch模型模块&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>主要观点&lt;/strong>：深入讲解了PyTorch的模型构建模块，包括Module、Parameter、容器等。&lt;/li>
+&lt;li>&lt;strong>论据和论证方法&lt;/strong>：通过代码示例和理论解释，详细阐述了如何构建自定义的神经网络模型。介绍了Module的继承关系、参数的初始化和管理方法。&lt;/li>
+&lt;li>&lt;strong>案例与细节&lt;/strong>：以LeNet-5为例，展示了如何构建和训练一个简单的卷积神经网络模型。&lt;/li>
+&lt;/ul>
+&lt;h3 id="5-pytorch优化模块">5. PyTorch优化模块&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>主要观点&lt;/strong>：介绍了PyTorch的优化模块，包括损失函数、优化器和学习率调整器等。&lt;/li>
+&lt;li>&lt;strong>论据和论证方法&lt;/strong>：通过代码示例和理论解释，详细阐述了不同损失函数的工作原理和适用场景。介绍了优化器的种类和选择方法，以及学习率调整器的使用技巧。&lt;/li>
+&lt;li>&lt;strong>案例与细节&lt;/strong>：提供了多个优化器的使用示例，包括SGD、Adam等，并展示了如何在学习过程中调整学习率。&lt;/li>
+&lt;/ul>
+&lt;h3 id="6-pytorch可视化模块">6. PyTorch可视化模块&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>主要观点&lt;/strong>：介绍了PyTorch的可视化模块，包括TensorBoard、混淆矩阵、CAM等。&lt;/li>
+&lt;li>&lt;strong>论据和论证方法&lt;/strong>：通过代码示例和理论解释，详细阐述了如何使用这些工具进行模型训练和评估的可视化。&lt;/li>
+&lt;li>&lt;strong>案例与细节&lt;/strong>：提供了TensorBoard的使用示例，展示了如何记录训练过程中的标量、直方图和图像等数据。同时，还介绍了如何使用CAM进行特征图的可视化。&lt;/li>
+&lt;/ul>
+&lt;h2 id="二项目应用篇">二、项目应用篇&lt;/h2>
+&lt;h3 id="7-计算机视觉项目案例">7. 计算机视觉项目案例&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>主要观点&lt;/strong>：通过八个计算机视觉实战项目，展示了PyTorch在计算机视觉领域的应用。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>论据和论证方法&lt;/strong>：每个项目都包含详细的代码讲解和实验结果分析，通过实例论证了PyTorch在图像分类、目标检测、图像分割等任务中的有效性。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>案例与细节&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>图像分类&lt;/strong>：以胸部X光肺炎分类为例，展示了如何使用PyTorch构建和训练图像分类模型。&lt;/li>
+&lt;li>&lt;strong>目标检测&lt;/strong>：以无人机场景的目标检测为例，介绍了YOLOv5模型的使用和训练过程。&lt;/li>
+&lt;li>&lt;strong>图像分割&lt;/strong>：以脑部MRI肿瘤分割为例，展示了如何使用U-Net模型进行图像分割。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="8-自然语言处理项目案例">8. 自然语言处理项目案例&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>主要观点&lt;/strong>：通过五个自然语言处理应用，展示了PyTorch在自然语言处理领域的应用。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>论据和论证方法&lt;/strong>：每个应用都包含详细的代码讲解和实验结果分析，通过实例论证了PyTorch在文本分类、机器翻译、命名体识别等任务中的有效性。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>案例与细节&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>文本分类&lt;/strong>：以电影评论情感分析为例，展示了如何使用RNN和LSTM模型进行文本分类。&lt;/li>
+&lt;li>&lt;strong>机器翻译&lt;/strong>：以中英互译为例，介绍了基于Transformer的机器翻译模型。&lt;/li>
+&lt;li>&lt;strong>命名体识别&lt;/strong>：以CLUENER数据集为例，展示了如何使用BERT模型进行命名体识别。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="三工业落地篇">三、工业落地篇&lt;/h2>
+&lt;h3 id="9-onnx与tensorrt应用">9. ONNX与TensorRT应用&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>主要观点&lt;/strong>：介绍了ONNX和TensorRT在模型部署中的应用。&lt;/li>
+&lt;li>&lt;strong>论据和论证方法&lt;/strong>：通过代码示例和理论解释，详细阐述了如何使用ONNX进行模型的格式转换和跨平台部署。介绍了TensorRT的工作原理和优化技巧，以及如何使用TensorRT进行模型的加速推理。&lt;/li>
+&lt;li>&lt;strong>案例与细节&lt;/strong>：提供了将PyTorch模型转换为ONNX格式，并使用TensorRT进行加速推理的示例。同时，还展示了如何使用Nsight Systems和Polygraphy等工具进行模型的性能分析和优化。&lt;/li>
+&lt;/ul>
+&lt;h2 id="书籍精髓和特色">书籍精髓和特色&lt;/h2>
+&lt;ul>
+&lt;li>&lt;strong>全面系统&lt;/strong>：本书涵盖了PyTorch框架的各个方面，从基础安装到高级应用，再到工业落地，提供了全面的指导。&lt;/li>
+&lt;li>&lt;strong>实战导向&lt;/strong>：通过丰富的案例和详细的代码讲解，帮助读者深入理解PyTorch的工作原理，并掌握其在实际问题中的应用。&lt;/li>
+&lt;li>&lt;strong>注重细节&lt;/strong>：书中不仅提供了完整的代码示例，还详细解释了每个步骤的原理和目的，帮助读者更好地理解和掌握相关知识。&lt;/li>
+&lt;li>&lt;strong>与时俱进&lt;/strong>：本书紧跟技术发展趋势，介绍了最新的深度学习模型和优化技巧，帮助读者保持技术领先。&lt;/li>
+&lt;/ul>
+&lt;p>《PyTorch（第二版）》是一本非常适合深度学习初学者和进阶者的实用教程。通过本书的学习，读者不仅可以掌握PyTorch框架的基本使用方法，还能够深入了解其在计算机视觉、自然语言处理等领域的应用。同时，本书还提供了从研究到生产的完整解决方案，帮助读者更好地将深度学习技术应用于实际工作中。&lt;/p></description></item><item><title>Defending APIs</title><link>https://book-excerpts.checkitout.dev/posts/defending_apis/</link><pubDate>Sun, 12 Jan 2025 22:49:56 +0800</pubDate><guid>https://book-excerpts.checkitout.dev/posts/defending_apis/</guid><description>&lt;h1 id="defending-apis摘要">《Defending APIs》摘要&lt;/h1>
 &lt;p>在当今数字化时代，API作为连接不同系统和服务的关键纽带，其安全性至关重要。《Defending APIs》围绕API安全这一核心主题，深入剖析了API面临的安全挑战，详细介绍了攻击者的常用手段，并全面阐述了从开发到运行阶段的一系列防御策略，旨在为安全专业人员、API开发者和系统架构师提供全面且实用的API安全指南。&lt;/p>
 &lt;h2 id="整体摘要">整体摘要&lt;/h2>
 &lt;p>本书作者Colin Domoney凭借其在软件开发和安全领域的丰富经验，通过理论阐述、案例分析和实践指导相结合的方式，深入探讨了API安全这一复杂且关键的领域。&lt;/p>
