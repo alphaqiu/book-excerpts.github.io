@@ -1,4 +1,74 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>帛书文摘</title><link>https://book-excerpts.checkitout.dev/</link><description>Recent content on 帛书文摘</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 18 Jan 2025 20:17:28 +0800</lastBuildDate><atom:link href="https://book-excerpts.checkitout.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>PyTorch实用教程（第二版）</title><link>https://book-excerpts.checkitout.dev/posts/pytorch/</link><pubDate>Sat, 18 Jan 2025 20:17:28 +0800</pubDate><guid>https://book-excerpts.checkitout.dev/posts/pytorch/</guid><description>&lt;h1 id="整体摘要">整体摘要&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>帛书文摘</title><link>https://book-excerpts.checkitout.dev/</link><description>Recent content on 帛书文摘</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 18 Jan 2025 22:53:11 +0800</lastBuildDate><atom:link href="https://book-excerpts.checkitout.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>Terraform in Action</title><link>https://book-excerpts.checkitout.dev/posts/terraform-in-action/</link><pubDate>Sat, 18 Jan 2025 22:53:11 +0800</pubDate><guid>https://book-excerpts.checkitout.dev/posts/terraform-in-action/</guid><description>&lt;h1 id="terraform实战指南云基础设施的自动化与规模化">Terraform实战指南：云基础设施的自动化与规模化&lt;/h1>
+&lt;h2 id="整体摘要">整体摘要&lt;/h2>
+&lt;p>《Terraform in Action》是一本深入浅出地介绍Terraform的实战指南，通过丰富的示例和详细的解释，帮助读者掌握Terraform在云基础设施自动化和规模化方面的应用。本书不仅适合Terraform初学者快速入门，也为有经验的用户提供了高级技巧和最佳实践。&lt;/p>
+&lt;p>Terraform是一种开源的基础设施即代码（IaC）工具，它允许用户通过编写声明式配置文件来定义、预览和部署云资源。与传统的配置管理工具不同，Terraform专注于基础设施的部署和管理，支持多种云平台和服务。本书通过一系列实践项目，展示了Terraform在构建和管理复杂云架构中的强大功能。&lt;/p>
+&lt;p>书中首先介绍了Terraform的基本概念、特性和优势，然后通过“Hello Terraform!”示例引导读者快速上手。接着，详细讲解了Terraform资源的生命周期、状态管理、配置语法等核心内容。在掌握了Terraform基础之后，书中通过部署多层级Web应用、服务器无应用、CI/CD管道等实战项目，逐步深入Terraform的高级应用。&lt;/p>
+&lt;p>此外，本书还探讨了Terraform模块的设计、共享和重用，以及如何在团队环境中协作开发Terraform配置。针对Terraform的安全性和秘密管理，书中也提供了详尽的指导，包括如何保护状态文件和日志、管理静态和动态秘密等。最后，通过扩展Terraform的自定义提供程序，展示了Terraform的灵活性和可扩展性。&lt;/p>
+&lt;p>本书的最大特色在于其实战性和系统性。每个章节都围绕一个具体的实践项目展开，通过详细的步骤和解释，帮助读者理解Terraform在实际应用中的工作原理和方法。同时，书中还穿插了大量的提示、技巧和最佳实践，使读者能够在学习过程中不断积累经验和知识。&lt;/p>
+&lt;h2 id="章节要点与摘要">章节要点与摘要&lt;/h2>
+&lt;h3 id="第1章-terraform初探">第1章 Terraform初探&lt;/h3>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Terraform简介&lt;/strong>：介绍了Terraform的基本概念、特性和优势，以及与其他IaC工具的比较。&lt;/li>
+&lt;li>&lt;strong>安装与配置&lt;/strong>：指导读者如何安装Terraform，并配置AWS提供程序以进行后续的实战演练。&lt;/li>
+&lt;li>&lt;strong>Hello Terraform!&lt;/strong>：通过部署一个简单的EC2实例，引导读者快速上手Terraform。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章作为Terraform的入门章节，通过简洁明了的介绍和实战演练，帮助读者快速了解Terraform的基本概念和用法。通过部署一个简单的EC2实例，读者可以亲身体验Terraform的强大功能，为后续章节的学习打下基础。&lt;/p>
+&lt;h3 id="第2章-terraform资源生命周期与状态管理">第2章 Terraform资源生命周期与状态管理&lt;/h3>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>资源生命周期&lt;/strong>：详细讲解了Terraform资源的创建、读取、更新和删除（CRUD）操作过程。&lt;/li>
+&lt;li>&lt;strong>状态管理&lt;/strong>：介绍了Terraform如何管理资源状态，以及状态文件在Terraform中的重要性。&lt;/li>
+&lt;li>&lt;strong>实践演练&lt;/strong>：通过创建一个本地文件资源，展示了Terraform资源生命周期和状态管理的实际应用。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章深入探讨了Terraform资源的生命周期和状态管理，这是Terraform的核心功能之一。通过详细的解释和实战演练，读者可以深入理解Terraform如何管理和维护云资源，以及状态文件在其中的重要作用。&lt;/p>
+&lt;h3 id="第3章-terraform配置语法与实践">第3章 Terraform配置语法与实践&lt;/h3>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>配置语法&lt;/strong>：详细介绍了Terraform的配置语法，包括变量、输出值、模板等。&lt;/li>
+&lt;li>&lt;strong>实践项目&lt;/strong>：通过构建一个Mad Libs故事生成器，展示了Terraform配置语法的实际应用。&lt;/li>
+&lt;li>&lt;strong>函数与模板&lt;/strong>：讲解了Terraform中的函数和模板使用，以及如何通过这些工具简化配置文件的编写。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章是Terraform配置语法的全面介绍，通过丰富的示例和详细的解释，帮助读者掌握Terraform配置文件的编写技巧。通过构建一个Mad Libs故事生成器项目，读者可以亲身体验Terraform配置语法的强大功能和灵活性。&lt;/p>
+&lt;h3 id="第4章-部署多层级web应用">第4章 部署多层级Web应用&lt;/h3>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>架构设计&lt;/strong>：介绍了多层级Web应用的架构设计，以及如何通过Terraform进行部署。&lt;/li>
+&lt;li>&lt;strong>模块设计&lt;/strong>：详细讲解了Terraform模块的设计原则和方法，以及如何通过模块来重用和共享配置代码。&lt;/li>
+&lt;li>&lt;strong>实战演练&lt;/strong>：通过部署一个实际的多层级Web应用，展示了Terraform在复杂云架构中的应用。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章通过部署一个多层级Web应用项目，展示了Terraform在构建和管理复杂云架构中的强大功能。通过介绍模块的设计原则和方法，读者可以深入理解如何通过模块来重用和共享配置代码，提高Terraform配置的可维护性和可扩展性。&lt;/p>
+&lt;h3 id="第5章-terraform模块与远程状态">第5章 Terraform模块与远程状态&lt;/h3>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>模块共享&lt;/strong>：介绍了如何通过Terraform Registry和GitHub等渠道共享和重用Terraform模块。&lt;/li>
+&lt;li>&lt;strong>远程状态存储&lt;/strong>：讲解了如何将Terraform状态文件存储在远程后端，以便在团队环境中协作开发。&lt;/li>
+&lt;li>&lt;strong>实战演练&lt;/strong>：通过部署一个Azure服务器无应用项目，展示了如何在团队环境中使用Terraform模块和远程状态。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章深入探讨了Terraform模块的共享和远程状态存储问题，这是Terraform在团队环境中应用的重要方面。通过介绍Terraform Registry和GitHub等渠道，读者可以了解如何共享和重用Terraform模块。同时，通过讲解远程状态存储的原理和方法，读者可以掌握如何在团队环境中协作开发Terraform配置。&lt;/p>
+&lt;h3 id="第6章-terraform与cicd">第6章 Terraform与CI/CD&lt;/h3>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>CI/CD概述&lt;/strong>：介绍了持续集成/持续部署（CI/CD）的基本概念和工作流程。&lt;/li>
+&lt;li>&lt;strong>Terraform与CI/CD结合&lt;/strong>：讲解了如何将Terraform与CI/CD管道结合，实现基础设施的自动化部署和测试。&lt;/li>
+&lt;li>&lt;strong>实战演练&lt;/strong>：通过部署一个Docker容器到GCP项目，展示了Terraform在CI/CD管道中的应用。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章介绍了Terraform与CI/CD的结合应用，这是实现基础设施自动化部署和测试的重要手段。通过详细的解释和实战演练，读者可以了解如何将Terraform集成到CI/CD管道中，实现基础设施的自动化部署和测试。这不仅提高了部署效率，还增强了部署的可靠性和可重复性。&lt;/p>
+&lt;h3 id="第7章-terraform高级模式与技巧">第7章 Terraform高级模式与技巧&lt;/h3>
+&lt;p>&lt;strong>要点&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>高级模式&lt;/strong>：介绍了Terraform中的一些高级模式和技巧，如Blue/Green部署、Canary部署等。&lt;/li>
+&lt;li>&lt;strong>条件表达式与动态块&lt;/strong>：讲解了Terraform中的条件表达式和动态块使用，以及如何通过这些工具简化配置文件的编写。&lt;/li>
+&lt;li>&lt;strong>实战演练&lt;/strong>：通过部署一个Kubernetes集群和一个CI/CD管道项目，展示了Terraform高级模式和技巧的实际应用。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>摘要&lt;/strong>：
+本章是Terraform高级模式和技巧的深入探讨，通过介绍Blue/Green部署、Canary部署等高级模式，以及条件表达式和动态块等技巧，帮助读者掌握Terraform在复杂场景下的应用。通过部署Kubernetes集群和CI/CD管道项目，读者可以亲身体验Terraform高级模式和技巧的强大功能和灵活性。&lt;/p></description></item><item><title>PyTorch实用教程（第二版）</title><link>https://book-excerpts.checkitout.dev/posts/pytorch/</link><pubDate>Sat, 18 Jan 2025 20:17:28 +0800</pubDate><guid>https://book-excerpts.checkitout.dev/posts/pytorch/</guid><description>&lt;h1 id="整体摘要">整体摘要&lt;/h1>
 &lt;p>本书详细阐述了PyTorch框架的各个方面，从基础安装到高级应用，再到工业落地，提供了全面的指导。书中通过丰富的案例和详细的代码讲解，帮助读者深入理解PyTorch的工作原理，并掌握其在计算机视觉、自然语言处理等领域的应用。同时，本书还深入探讨了模型部署和优化的关键环节，为读者提供了从研究到生产的完整解决方案。&lt;/p>
 &lt;p>本书分为三篇：PyTorch基础、项目应用和工业落地。在PyTorch基础篇中，详细介绍了PyTorch的环境配置、核心模块、数据模块、模型模块、优化模块和可视化模块。在项目应用篇中，通过八个计算机视觉实战项目和五个自然语言处理应用，展示了PyTorch在实际问题中的应用。在工业落地篇中，讲解了ONNX与TensorRT的应用，以及模型部署的关键环节。&lt;/p>
 &lt;h1 id="章节要点和摘要">章节要点和摘要&lt;/h1>
